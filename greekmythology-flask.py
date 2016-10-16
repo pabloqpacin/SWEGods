@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 #Static pages
 app.config['STATIC_ABOUT_PAGE'] = os.path.join('.', 'static', 'about.html')
-app.config['STATIC_SPLASH_PAGE'] = os.path.join('.', 'static', 'splash.html')
+app.config['STATIC_SPLASH_PAGE'] = os.path.join('.', 'static', 'index.html')
 
 #Pillar pages
 app.config['STATIC_GODS_FOLDER'] = os.path.join('.', 'static', 'gods')
@@ -82,7 +82,7 @@ def static_files(folder, file):
 	elif folder == 'js':
 		return send_from_directory(app.config['STATIC_JS_FOLDER'],
                                file.lower(), as_attachment=False)
-	elif folder == 'images':
+	elif folder == 'img':
 		return send_from_directory(app.config['STATIC_IMAGES_FOLDER'],
                                file.lower(), as_attachment=False)
 	else:			
