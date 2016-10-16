@@ -15,6 +15,11 @@ app.config['STATIC_HEROS_FOLDER'] = os.path.join('.', 'static', 'heros')
 app.config['STATIC_GODS_LIST'] = os.path.join('.', 'static', 'gods.html')
 app.config['STATIC_HEROS_LIST'] = os.path.join('.', 'static', 'heros.html')
 
+#Static files
+app.config['STATIC_CSS_FOLDER'] = os.path.join('.', 'static', 'css')
+app.config['STATIC_FONTS_FOLDER'] = os.path.join('.', 'static', 'fonts')
+app.config['STATIC_JS_FOLDER'] = os.path.join('.', 'static', 'js')
+app.config['STATIC_IMAGES_FOLDER'] = os.path.join('.', 'static', 'img')
 
 def error_wrapper(content):
 	return render_template('error_template.html', error_message=content)
@@ -63,3 +68,20 @@ def hero_page(hero):
 		return send_from_directory(app.config['STATIC_HEROS_FOLDER'],
                                hero.lower() + '.html', as_attachment=False)
 	return error_wrapper('Page for hero: ' + hero + ' to be added')
+
+@app.route('/static/<string:folder>/<string:file>')
+def static_files(folder, file):
+	""" Serves the static files that will be used through all iterations of the project
+	"""
+	elif folder == 'css':
+		return send_from_directory(app.config['STATIC_CSS_FOLDER'],
+                               file.lower(), as_attachment=False)
+	elif folder == 'fonts':
+		return send_from_directory(app.config['STATIC_FONTS_FOLDER'],
+                               file.lower(), as_attachment=False)
+	elif folder == 'js':
+		return send_from_directory(app.config['STATIC_JS_FOLDER'],
+                               file.lower(), as_attachment=False)
+	elif folder == 'images':
+		return send_from_directory(app.config['STATIC_IMAGES_FOLDER'],
+                               file.lower(), as_attachment=False)
