@@ -1,0 +1,1 @@
+cmd /k "python greekmythology-flask.py & set FLASK_APP=greekmythology-flask.py& flask run"
