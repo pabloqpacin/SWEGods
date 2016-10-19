@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, send_file, escape, Markup, render_template
+from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort
 import os
 
 app = Flask(__name__)
@@ -123,5 +123,5 @@ def static_files(folder, file):
 		return send_from_directory(os.path.join(app.config['STATIC_IMAGES_FOLDER'], 'about'),
                                file.lower(), as_attachment=False)
 	else:			
-		return 404
+		abort(code = 404)
 
