@@ -10,10 +10,14 @@ app.config['STATIC_SPLASH_PAGE'] = os.path.join('.', 'static', 'index.html')
 #Pillar pages
 app.config['STATIC_GODS_FOLDER'] = os.path.join('.', 'static', 'gods')
 app.config['STATIC_HEROS_FOLDER'] = os.path.join('.', 'static', 'heros')
+app.config['STATIC_CREATURES_FOLDER'] = os.path.join('.', 'static', 'creatures')
+app.config['STATIC_MYTHS_FOLDER'] = os.path.join('.', 'static', 'myths')
 
 #List pages
 app.config['STATIC_GODS_LIST'] = os.path.join('.', 'static', 'gods.html')
 app.config['STATIC_HEROS_LIST'] = os.path.join('.', 'static', 'heros.html')
+app.config['STATIC_CREATURES_LIST'] = os.path.join('.', 'static', 'creatures.html')
+app.config['STATIC_MYTHS_LIST'] = os.path.join('.', 'static', 'myths.html')
 
 #Static files
 app.config['STATIC_CSS_FOLDER'] = os.path.join('.', 'static', 'css')
@@ -52,6 +56,20 @@ def heros_model():
 		return send_file(app.config['STATIC_HEROS_LIST'])
 	return error_wrapper('Heros Model page to be added'), 404
 
+@app.route('/creatures')
+@app.route('/creatures/')
+def creatures_model():
+	if os.path.exists(app.config['STATIC_CREATURES_LIST']):
+		return send_file(app.config['STATIC_CREATURES_LIST'])
+	return error_wrapper('Creatures Model page to be added'), 404
+	
+@app.route('/myths')
+@app.route('/myths/')
+def myths_model():
+	if os.path.exists(app.config['STATIC_MYTHS_LIST']):
+		return send_file(app.config['STATIC_MYTHS_LIST'])
+	return error_wrapper('Myths Model page to be added'), 404
+
 #using string instead of path because we don't want '/' to count
 @app.route('/gods/<string:god>') 
 @app.route('/gods/<string:god>/')
@@ -68,8 +86,24 @@ def hero_page(hero):
 		return send_from_directory(app.config['STATIC_HEROS_FOLDER'],
                                hero.lower() + '.html', as_attachment=False)
 	return error_wrapper('Page for hero: ' + hero + ' to be added'), 404
-
-@app.route('/static/<string:folder>/<string:file>')
+	
+@app.route('/creatures/<string:creature>')
+@app.route('/creatures/<string:creature>/')
+def creature_page(creature):
+	if os.path.exists(os.path.join(app.config['STATIC_CREATURES_FOLDER'], creature.lower() + ".html")):
+		return send_from_directory(app.config['STATIC_CREATURES_FOLDER'],
+                               creature.lower() + '.html', as_attachment=False)
+	return error_wrapper('Page for creature: ' + creature + ' to be added'), 404
+	
+@app.route('/myths/<string:myth>')
+@app.route('/myths/<string:myth>/')
+def myth_page(myth):
+	if os.path.exists(os.path.join(app.config['STATIC_MYTHS_FOLDER'], myth.lower() + ".html")):
+		return send_from_directory(app.config['STATIC_MYTHS_FOLDER'],
+                               myth.lower() + '.html', as_attachment=False)
+	return error_wrapper('Page for myth: ' + myth + ' to be added'), 404
+				   
+@app.route('/static/<path:folder>/<string:file>')
 def static_files(folder, file):
 	""" Serves the static files that will be used through all iterations of the project
 	"""
@@ -85,5 +119,9 @@ def static_files(folder, file):
 	elif folder == 'img':
 		return send_from_directory(app.config['STATIC_IMAGES_FOLDER'],
                                file.lower(), as_attachment=False)
+	elif folder == 'img/about':
+		return send_from_directory(os.path.join(app.config['STATIC_IMAGES_FOLDER'], 'about'),
+                               file.lower(), as_attachment=False)
 	else:			
-		return error_wrapper('Invalid file'), 404
+		return 404
+
