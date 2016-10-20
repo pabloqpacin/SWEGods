@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 #------------------------------------------------------------------------#
 # WARNING :                                                              #
-# All the test cases are dummy now and need to be fixed upon next Phase  #
+# All the test cases are dummy and can't be run right now                #
+# and need to be fixed upon next Phases                                  #
 #------------------------------------------------------------------------#
 
 class MyUnitTest(TestCase) :
@@ -29,9 +30,9 @@ class MyUnitTest(TestCase) :
             myth_page,
             static_files]
 
-    #-------------------
+    #---------------------
     # test error_wrapper()
-    #-------------------
+    #---------------------
 
     def test_1 (self) :
         res = self.app.get('/')
@@ -228,5 +229,8 @@ class MyUnitTest(TestCase) :
         for f in self.a :
             assertEqua(static_files(myths, mythofperseus.html), '/static/css/mythofperseus.html')
 
+#------
+# main
+#------
 if __name__ == "__main__ " :
     main()
