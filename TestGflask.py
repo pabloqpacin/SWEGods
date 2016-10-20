@@ -13,6 +13,8 @@ app = Flask(__name__)
 
 class MyUnitTest(TestCase) :
     def setUp (self) :
+        self.app = app.test_client()
+
         self.a = [
             error_wrapper,
             index,
@@ -30,7 +32,11 @@ class MyUnitTest(TestCase) :
     #-------------------
     # test error_wrapper()
     #-------------------
+
     def test_1 (self) :
+        res = self.app.get('/')
+        assertEqual(res.data, 'error_template.html')
+
         for f in self.a :
             assertEqual(error_wrapper('error_template.html'), error_message)
 
@@ -46,6 +52,9 @@ class MyUnitTest(TestCase) :
     # test index()
     #-------------------
     def test_4 (self) :
+        res = self.app.get('zeus')
+        assertEqual(res.data, '/static/gods/zeus')
+
         for f in self.a :
             assertEqual(index('zeus'), '/static/gods/zeus')
 
