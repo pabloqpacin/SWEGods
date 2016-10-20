@@ -8,11 +8,14 @@ app = Flask(__name__)
 
 #------------------------------------------------------------------------#
 # WARNING :                                                              #
-# All the test cases are dummy now and need to be fixed upon next Phase  #
+# All the test cases are dummy and can't be run right now                #
+# and need to be fixed upon next Phases                                  #
 #------------------------------------------------------------------------#
 
 class MyUnitTest(TestCase) :
     def setUp (self) :
+        self.app = app.test_client()
+
         self.a = [
             error_wrapper,
             index,
@@ -27,10 +30,14 @@ class MyUnitTest(TestCase) :
             myth_page,
             static_files]
 
-    #-------------------
+    #---------------------
     # test error_wrapper()
-    #-------------------
+    #---------------------
+
     def test_1 (self) :
+        res = self.app.get('/')
+        assertEqual(res.data, 'error_template.html')
+
         for f in self.a :
             assertEqual(error_wrapper('error_template.html'), error_message)
 
@@ -46,6 +53,9 @@ class MyUnitTest(TestCase) :
     # test index()
     #-------------------
     def test_4 (self) :
+        res = self.app.get('zeus')
+        assertEqual(res.data, '/static/gods/zeus')
+
         for f in self.a :
             assertEqual(index('zeus'), '/static/gods/zeus')
 
@@ -219,5 +229,8 @@ class MyUnitTest(TestCase) :
         for f in self.a :
             assertEqua(static_files(myths, mythofperseus.html), '/static/css/mythofperseus.html')
 
+#------
+# main
+#------
 if __name__ == "__main__ " :
     main()
