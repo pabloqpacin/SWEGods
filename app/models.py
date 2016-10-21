@@ -6,6 +6,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/greekmythology'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# helper functions for columns
 def character_column():
     return db.Column('character_id', db.Integer, db.ForeignKey('character.id'))
 
@@ -21,31 +22,47 @@ def creature_column():
 def myth_column():
     return db.Column('myth_id', db.Integer, db.ForeignKey('myth.id'))
 
-# characters to parents (who are not gods)
+"""
+Maps characters to parents if the parents are not gods
+"""
 characters_to_parents = db.Table('characters_to_parents',
                                  character_column(), character_column())
 
-# gods to children
+"""
+Maps gods to their children
+"""
 gods_to_children = db.Table('gods_to_children',
                             god_column(), character_column())
 
-# creatures to related characters
+"""
+Maps creatures to related characters
+"""
 creatures_to_characters = db.Table('creatures_to_characters',
                                    creature_column(), character_column())
 
-# creatures to related myths
+"""
+Maps creatures to related myths
+"""
 creatures_to_myths = db.Table('creatures_to_myths',
                               creature_column(), myth_column())
 
-# myths to main characters
+"""
+Maps myths to main characters
+"""
 myths_to_characters = db.Table('myths_to_characters',
                                myth_column(), character_column())
 
-# myths to related gods
+"""
+Maps myths to related gods
+"""
 myths_to_gods = db.Table('myths_to_gods', myth_column(), god_column())
 
 
 class Character(db.Model):
+    """
+    Base class for gods, heroes, and creatures.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     parents = db.relationship('Character', secondary=characters_to_parents)
@@ -58,6 +75,10 @@ class Character(db.Model):
 
 
 class God(Character):
+    """
+    Information about a god in Greek mythology.
+    """
+
     power = db.Column(db.String)
     olympian = db.Column(db.Boolean)
     children = db.relationship('Character', secondary=gods_to_children,
@@ -77,6 +98,10 @@ class God(Character):
 
 
 class Hero(Character):
+    """
+    Information about a hero in Greek mythology.
+    """
+
     hero_type = db.Column(db.String)
     strength_or_power = db.Column(db.String)
     death = db.Column(db.String)
@@ -94,6 +119,11 @@ class Hero(Character):
 
 
 class Creature(Character):
+    """
+    Information about a creature from Greek mythology,
+    excludes gods and heroes.
+    """
+
     creature_type = db.Column(db.String)
     characteristics = db.Column(db.String)
     related_characters = db.relationship('Character',
@@ -110,6 +140,10 @@ class Creature(Character):
         return '<Creature %r>' % self.name
 
 class Myth(db.Model):
+    """
+    Information about a myth from Greek mythology.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     main_characters = db.relationship('Character',
