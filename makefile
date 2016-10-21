@@ -1,5 +1,5 @@
 FILES :=                            \
-    gflask.py                       \
+    IDB1.py                       \
     static/                     	\
     templates/                    
 
