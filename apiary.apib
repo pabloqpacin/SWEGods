@@ -1,0 +1,157 @@
+FORMAT: 1A
+HOST: http://greekmythology.me/
+
+# Greek Mythology
+
+Greek Mythlogy is a simple API that allows peole navigate through our greek mythology database. They will find information
+regarding famous gods, heroes, creatures, and myths.
+### God Information[GET]
+Returns a information about god given specific attribute.
++ Response 200 (application/json)
+
+        [
+            {
+                "ID" : 1
+                "name" : "Zeus"
+                "power" : ["sky", "weather", "kings", "fate"]
+                "birth_parents" : ["Kronos","Rhea"]
+                "olympian" : "yes"
+                "symbol" : ["lightning bolt", "eagle", "bull"]
+                "children" : ["Aphrodite", "Phersephone", "Hercules"]
+                "roman_counterpar" : "Jupiter"
+            },
+            {
+                "ID" : 2
+                "name" : "Poseidon"
+                "power" : ["King of the Sea", "earthquakes", "floods", "horses"]
+                "birth_parents" : ["Kronos","Rhea"]
+                "olympian" : "yes"
+                "symbol" : ["Trident", "Bull", "Horse", "Dolphin"]
+                "children" : ["Triton", "Nerids"]
+                "roman_counterpar" : "Neptune"
+            }
+            {
+                "ID" : 3
+                "name" : "Hades"
+                "power" : ["God of the dead", "king of the underworld"]
+                "birth_parents" : ["Kronos","Rhea"]
+                "olympian" : "yes"
+                "symbol" : ["Royal sceptre", "cornucopia"]
+                "children" : ["Cerberus", "the Erinyes"]
+                "roman_counterpar" : "Pluto"
+            }
+        ]
+
++ Parameters
+    + god_info(key_string)
+
+        
+### Hero Information [GET]
+Returns a information about hero given specific attribute.
++ Response 200 (application/json)
+
+        [
+            {
+                "ID" : 4
+                "name": "Heracles"
+                "birth_parents": ["Zeus", "Alcmene"],
+                "type": "Demigod",
+                "strength": ["Bow and arrow", "champion", "wrestler", "superhuman strength", "intelligence"],
+                "death": "N/A",
+                "cause": "The Twelve Labors"
+            },
+            {
+                "ID" : 5
+                "name": "Odysseus"
+                "birth_parents": ["N/A"],
+                "type": "Human" ,
+                "strength": ["Versatility", "brilliance"],
+                "death": "Killed by Telegonus"
+                "cause": "The Odyssey: ten eventful years he took to return home after the Trojan War"
+            },
+            {
+                "ID" : 6
+                "name": "Perseus"
+                "birth_parents": ["Zeus", "Danae"],
+                "type": "Demigod" ,
+                "strength": ["N/A"],
+                "death": "Died of old age",
+                "cause": "Kill Medusa"
+            }
+        ]
++ Parameters
+    + hero_info(key_string)
+
+
+
+### Creatures Information [GET]
+Returns a information about creature given specific attribute.
++ Response 200 (application/json)
+
+        [
+            {
+                "ID" : 7
+                "name" : "Argus Panoptes"
+                "type" : "Giant",
+                "parents" : ["N/A"],
+                "characteristics" : ["Hundred-eyed giant", "Hera's servant"],
+                "related_characters" : ["Hera", "Zeus", "Io"],
+                "related_myths" : "Myth of Io"
+            },
+            {
+                "ID" : 8
+                "name" : "Medusa"
+                "type" : "Gorgon",
+                "parents" : ["Phorcys", "Ceto"],
+                "characteristics" : ["Mortal", "Winged creature", "Serpent locks of hair"],
+                "related_characters" : ["Perseus"] ,
+                "related_myths" : "Myth of Perseus"
+            },
+            {
+                "ID" : 9
+                "name" : "Minotaur"
+                "type" : "Hybrid",
+                "parents" : ["Cretan Bull", "Pasiphae"],
+                "characteristics" : ["Bull-headed monster"],
+                "related_characters" : ["Poseidon", "Theseus", "Daedalus", "Icarus"],
+                "related_myths" : "Flight of Daedalus and Icaus"
+            }
+        ]
++ Parameters
+    + creature_info(key_string)
+        
+### List Myths [GET]
+Returns a information about myth given specific attribute.
++ Response 200 (application/json)
+
+        [
+            {   
+                "ID" : 10
+                "myth": "Flight of Daedalus and Icarus"
+                "main_characters": ["Icarus", "Daedalus", "Minotaur"],
+                "related_gods": ["N/A"],
+                "summary": ,"link"
+                "location": "Crete",
+                "impact" : "A man who does not recognise his own limitations"
+            },
+            {
+                "ID" : 11
+                "myth": "Myth of Perseus"
+                "main_characters": ["Perseus","Polydectes"],
+                "related_gods": ["Hermes", "Athenea"],
+                "summary": ,"link"
+                "location": "Argos",
+                "impact" : "Nature of fate and propheciess"
+            },
+            {
+                "ID" : 12
+                "myth": "Orpheus and Eurydice"
+                "main_characters": ["Orpheus"],
+                "related_gods": ["Dionysus", "Hades"],
+                "summary": ,"link"
+                "location": "N/A",
+                "impact" : "Romantic love is a dangerous thing"
+            }
+        ]
++ Parameters
+    + myth_info(key_string)
