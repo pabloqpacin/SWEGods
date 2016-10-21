@@ -47,7 +47,7 @@ class MyUnitTest(TestCase) :
 
     def test_3 (self) :
         for f in self.a :
-            assertEqual(error_wrapper('error.html', 'Page for myth: ' + myth + ' to be added')
+            assertEqual(error_wrapper('error.html', 'Page for myth: ' + myth + ' to be added'))
 
     #-------------------
     # test index()
