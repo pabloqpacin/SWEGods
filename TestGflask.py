@@ -2,7 +2,7 @@
 
 from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort
 from unittest import main, TestCase
-from gflask import error_wrapper, index, about_page, gods_model, heros_model, creatures_model, myths_model, god_page, hero_page, creature_page, myth_page, static_files
+from gflask import error_wrapper, index, about_page, gods_model, heroes_model, creatures_model, myths_model, god_page, hero_page, creature_page, myth_page, static_files
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ class MyUnitTest(TestCase) :
             index,
             about_page,
             gods_model,
-            heros_model,
+            heroes_model,
             creatures_model,
             myths_model,
             god_page,
@@ -69,15 +69,15 @@ class MyUnitTest(TestCase) :
 
     def test_7 (self) :
         for f in self.a :
-            assertEqual(index('hercules'), '/static/heros/hercules')
+            assertEqual(index('hercules'), '/static/heroes/hercules')
 
     def test_8 (self) :
         for f in self.a :
-            assertEqual(index('odysseus'), '/static/heros/odysseus')
+            assertEqual(index('odysseus'), '/static/heroes/odysseus')
 
     def test_9 (self) :
         for f in self.a :
-            assertEqual(index('perseus'), '/static/heros/perseus')
+            assertEqual(index('perseus'), '/static/heroes/perseus')
 
     def test_10 (self) :
         for f in self.a :
@@ -114,15 +114,15 @@ class MyUnitTest(TestCase) :
             assertEqua(gods_model('GODS_LIST'), null)
 
     #-------------------
-    # test heros_model
+    # test heroes_model
     #-------------------
     def test_17 (self) :
         for f in self.a :
-            assertEqua(heros_model(), '/static/heros.html')
+            assertEqua(heroes_model(), '/static/heroes.html')
 
     def test_18 (self) :
         for f in self.a :
-            assertEqua(heros_model('HEROS_LIST'), null)
+            assertEqua(heroes_model('HEROS_LIST'), null)
 
     #-------------------
     # test creatures_model
@@ -162,19 +162,19 @@ class MyUnitTest(TestCase) :
             assertEqua(gods_page('zeus'), '/static/gods/zeus.html')
 
     #-------------------
-    # test heros_page
+    # test heroes_page
     #-------------------
     def test_26 (hero) :
         for f in self.a :
-            assertEqua(heros_page('hercules'), '/static/heros/hercules.html')
+            assertEqua(heroes_page('hercules'), '/static/heroes/hercules.html')
 
     def test_27 (hero) :
         for f in self.a :
-            assertEqua(heros_page('odysseus'), '/static/heros/odysseus.html')
+            assertEqua(heroes_page('odysseus'), '/static/heroes/odysseus.html')
 
     def test_28 (hero) :
         for f in self.a :
-            assertEqua(heros_page('perseus'), '/static/heros/perseus.html')
+            assertEqua(heroes_page('perseus'), '/static/heroes/perseus.html')
 
     #-------------------
     # test creatures_page
@@ -219,7 +219,7 @@ class MyUnitTest(TestCase) :
 
     def test_37 (folder, file) :
         for f in self.a :
-            assertEqua(static_files(heros, hercules.html), '/static/heros/hercules.html')
+            assertEqua(static_files(heroes, hercules.html), '/static/heroes/hercules.html')
 
     def test_38 (folder, file) :
         for f in self.a :
