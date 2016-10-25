@@ -9,13 +9,13 @@ app.config['STATIC_SPLASH_PAGE'] = os.path.join('.', 'static', 'index.html')
 
 #Pillar pages
 app.config['STATIC_GODS_FOLDER'] = os.path.join('.', 'static', 'gods')
-app.config['STATIC_HEROS_FOLDER'] = os.path.join('.', 'static', 'heroes')
+app.config['STATIC_HEROES_FOLDER'] = os.path.join('.', 'static', 'heroes')
 app.config['STATIC_CREATURES_FOLDER'] = os.path.join('.', 'static', 'creatures')
 app.config['STATIC_MYTHS_FOLDER'] = os.path.join('.', 'static', 'myths')
 
 #List pages
 app.config['STATIC_GODS_LIST'] = os.path.join('.', 'static', 'gods.html')
-app.config['STATIC_HEROS_LIST'] = os.path.join('.', 'static', 'heroes.html')
+app.config['STATIC_HEROES_LIST'] = os.path.join('.', 'static', 'heroes.html')
 app.config['STATIC_CREATURES_LIST'] = os.path.join('.', 'static', 'creatures.html')
 app.config['STATIC_MYTHS_LIST'] = os.path.join('.', 'static', 'myths.html')
 
@@ -52,8 +52,8 @@ def gods_model():
 @app.route('/heroes')
 @app.route('/heroes/')
 def heroes_model():
-	if os.path.exists(app.config['STATIC_HEROS_LIST']):
-		return send_file(app.config['STATIC_HEROS_LIST'])
+	if os.path.exists(app.config['STATIC_HEROES_LIST']):
+		return send_file(app.config['STATIC_HEROES_LIST'])
 	return error_wrapper('Heroes Model page to be added'), 404
 
 @app.route('/creatures')
@@ -82,8 +82,8 @@ def god_page(god):
 @app.route('/heroes/<string:hero>')
 @app.route('/heroes/<string:hero>/')
 def hero_page(hero):
-	if os.path.exists(os.path.join(app.config['STATIC_HEROS_FOLDER'], hero.lower() + ".html")):
-		return send_from_directory(app.config['STATIC_HEROS_FOLDER'],
+	if os.path.exists(os.path.join(app.config['STATIC_HEROES_FOLDER'], hero.lower() + ".html")):
+		return send_from_directory(app.config['STATIC_HEROES_FOLDER'],
                                hero.lower() + '.html', as_attachment=False)
 	return error_wrapper('Page for hero: ' + hero + ' to be added'), 404
 
