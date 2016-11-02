@@ -130,7 +130,7 @@ class Creature(Character):
                                          secondary=creatures_to_characters)
     related_myths = db.relationship('Myth',
                                     secondary=creatures_to_myths)
-    
+
     def __init__(self, name, creature_type, characteristics):
         super().__init__(self, name)
         self.creature_type = creature_type
