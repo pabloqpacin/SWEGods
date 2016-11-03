@@ -1,7 +1,16 @@
 FILES :=                            \
-    IDB1.py                       \
+    IDB2.py                     	\
     static/                     	\
-    templates/                    
+    templates/                    	\
+    app/models.py					\
+    app/tests.py					\
+    # app/tests.out					\
+ 	# IDB2.html						\
+ 	# IDB2.log						\
+ 	# IDB2.pdf						\
+ 	.gitignore						\
+ 	.travis.yml						\
+ 	makefile						  
 
 
 check:
