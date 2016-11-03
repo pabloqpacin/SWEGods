@@ -24,10 +24,20 @@ var creatures = [{
     myths: "Flight of Daedalus and Icaus"
   }];
 
+  function onRowSelect(row, isSelected){
+    window.location.href = '/creatures/' + row.name.toLowerCase().replace(/ /gi,'');
+  }
+
+  var selectRowProp = {
+    mode: "radio",
+    clickToSelect: true,
+    bgColor: "rgb(238, 193, 213)",
+    onSelect: onRowSelect
+  };
 
   ReactDOM.render(
     <div style={{marginTop: 50 + 'px'}}>
-      <BootstrapTable data={creatures} striped={true} hover={true} pagination={true}>
+      <BootstrapTable data={creatures} striped={true} hover={true} pagination={true} selectRow={selectRowProp}>
           <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="name" dataSort={true}>Name</TableHeaderColumn>
           <TableHeaderColumn dataField="type" dataSort={true}>Type</TableHeaderColumn>

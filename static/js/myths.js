@@ -24,10 +24,20 @@ var myths = [{
     impact: "Romantic love is a dangerous thing"
   }];
 
+  function onRowSelect(row, isSelected){
+    window.location.href = '/myths/' + row.myth.toLowerCase().replace(/ /gi,'');;
+  }
+
+  var selectRowProp = {
+    mode: "radio",
+    clickToSelect: true,
+    bgColor: "rgb(238, 193, 213)",
+    onSelect: onRowSelect
+  };
 
   ReactDOM.render(
     <div style={{marginTop: 50 + 'px'}}>
-      <BootstrapTable data={myths} striped={true} hover={true} pagination={true}>
+      <BootstrapTable data={myths} striped={true} hover={true} pagination={true} selectRow={selectRowProp}>
           <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
           <TableHeaderColumn dataField="myth" dataSort={true}>Myth</TableHeaderColumn>
           <TableHeaderColumn dataField="main_characters" dataSort={true}>Main Charactres</TableHeaderColumn>
