@@ -12,6 +12,11 @@ FILES :=                            \
  	.travis.yml						\
  	makefile						  
 
+IDB.log:
+	git log > IDB2.log
+
+IDB.html: IDB2.py
+	pydoc3 -w IDB2
 
 check:
 	@not_found=0;                                 \
@@ -31,3 +36,9 @@ check:
         exit 1;                                   \
     fi;                                           \
     echo "success";
+
+clean:
+	rm -f *.pyc
+	rm -f IDB2.log
+
+test: IDB.html IDB.log check

@@ -1,0 +1,567 @@
+commit 57648c4fe47677d03070f702ba70ddb5f20b8811
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Nov 3 15:18:35 2016 -0500
+
+    update clickable links
+
+commit 43d5566237b0c40b3496fc22f5bde0b0f6d8edfd
+Author: root <ledennis@utexas.edu>
+Date:   Thu Nov 3 06:21:30 2016 +0000
+
+    Live version of gods.html works now
+
+commit 30dcb2fe2fa7a72ff052c1175af7ca713a333ccc
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Nov 3 01:11:25 2016 -0500
+
+    updated makefile to not break
+
+commit 7f9cc3b5af49c8a3bfad6a3de548785e69bde11c
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Nov 3 00:57:10 2016 -0500
+
+    renamed IDB1 to IDB2
+
+commit 017599ab9906ef0bcdf1f4800519c7c2c329786f
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Nov 3 00:56:57 2016 -0500
+
+    updated models.py to use postgres URI
+
+commit a47d7122edb2970eef9eeba2283d8278e724fd1b
+Author: salihoro <salihoro@users.noreply.github.com>
+Date:   Wed Nov 2 22:53:07 2016 -0500
+
+    modified about for mobile view
+
+commit c8bc18f6c47079077f2b0acc714650ef71b5a66c
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Nov 2 22:45:25 2016 -0500
+
+    add FB to about page
+
+commit b7f7a41c108ae2172b2dcf7856f1bc0adb831eb0
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Nov 2 22:30:51 2016 -0500
+
+    update fixes
+
+commit 64f5921a05a3c2c78283c79c23af5756fb73b6e6
+Author: salihoro <salihoro@users.noreply.github.com>
+Date:   Wed Nov 2 21:55:51 2016 -0500
+
+    converted creatures to react
+
+commit 0ec0f6902ef17392e1c0eed7310023d0cb589eb7
+Author: salihoro <salihoro@users.noreply.github.com>
+Date:   Wed Nov 2 21:35:02 2016 -0500
+
+    converted heroes page to react
+
+commit fba91c4a827eec06e7907d2a260669cc93740551
+Author: salihoro <salihoro@users.noreply.github.com>
+Date:   Wed Nov 2 21:02:29 2016 -0500
+
+    implemented react and added sortable/pagination page for gods
+
+commit 3f3cba7aea7a3995da6bf3cb3cbae4a2daa7fd23
+Author: salihoro <salihoro@users.noreply.github.com>
+Date:   Wed Nov 2 20:48:38 2016 -0500
+
+    added babel bootstrap-tablecss and couple of js files for react
+
+commit beb8f9b2f62141d5e1b818cfe2c4ab358eb53c7e
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Nov 2 17:35:41 2016 -0500
+
+    update about page
+
+commit abb14adcb8116715d7ef2f6f39946607bd102dbe
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Tue Nov 1 22:03:47 2016 -0500
+
+    fix content display
+
+commit 70040be4766a7efcb08b7a6c14b9a6ed7cd58847
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Tue Nov 1 21:42:34 2016 -0500
+
+    update sortTable
+
+commit 6086dd444d94c0a09f994158a317375067b4e108
+Author: root <ledennis@utexas.edu>
+Date:   Tue Oct 25 14:48:34 2016 +0000
+
+    Iracus to Icarus
+
+commit 20224bb6e4c664f296c50f3fdd4b1774ff3ad270
+Author: root <ledennis@utexas.edu>
+Date:   Tue Oct 25 00:48:49 2016 +0000
+
+    Changed hero to heroes
+
+commit 559065003f56779108b9a01c5ead432af4913a1c
+Author: root <ledennis@utexas.edu>
+Date:   Tue Oct 25 00:28:07 2016 +0000
+
+    Fixed typos and made files lowercase
+
+commit d508280eada24ae2b4ffa07b8b1f8953e9d2ba0d
+Author: dnmartinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 21:11:59 2016 -0500
+
+    Update makefile
+
+commit 111cd098e5140e0eaea5bdfcf64913456734b25b
+Author: dnmartinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 21:06:07 2016 -0500
+
+    Update about.html
+
+commit ccdca0d7af262e763c9489c0da3df0e352814e0f
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 21:02:32 2016 -0500
+
+    updated windows run file
+
+commit d13ce41bb3b3b2699d7b13252c276de70bbe23cf
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 21:00:33 2016 -0500
+
+    added documentation
+
+commit 2701f3477de42d415a03b6089ef1b17f43833cb8
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:57:35 2016 -0500
+
+    renamed main file
+
+commit 514dad83303844b5ea1fb87e77a2f32038f13f8c
+Merge: c8ef63f e1bc9f1
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:32:58 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods
+
+commit e1bc9f16ea188a947c8da1eb73b47f2fa8f240a2
+Merge: 7f2ab88 f8dbf49
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:32:28 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit 7f2ab8875b6f5497a1e12e9498b660830e043221
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:32:23 2016 -0500
+
+    added documentation to models.py
+
+commit 9b1f68d3f4f18ff673229037161ca357ff19de58
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:27:47 2016 -0500
+
+    fixed some typos
+
+commit f8dbf49e70113edb553ae055ec88bcb1e7a047ba
+Merge: 694d6b0 c1b7018
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 20:15:11 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit 694d6b03aae33dd0cf47770e1dde5a9834a688c3
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 20:14:21 2016 -0500
+
+    finalize about page
+
+commit c1b7018e6751080248e3474b09d527a0f3bf9d76
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:10:27 2016 -0500
+
+    updated models to squelch warning
+
+commit 6dca12f9899ef06437974b06c4eaa15788a42249
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:04:56 2016 -0500
+
+    moved models and tests to the correct position
+
+commit f082a44f7c0c94f77c1eb5ee279d5d73dfca28ed
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 20:02:51 2016 -0500
+
+    fixed missing parens
+
+commit c8ef63f0670a93452f1d8d6709292d077193ec59
+Author: dnmartinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 19:59:36 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 8fa19fa26400dd43714679ac66c1df021e2ce20b
+Merge: be14257 fb38b95
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 19:58:45 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit be142574078c156ad5f59cb8b06e10e4f66f4271
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 19:57:57 2016 -0500
+
+    created SQLAlchemy models, fix #13
+
+commit fb38b956ae20eb63f403e48238255d8952be6145
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 19:47:05 2016 -0500
+
+    finalize about page
+
+commit 348c03669198302bba7485eed08d2d1b1b2bcc36
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 19:15:32 2016 -0500
+
+    cleaning up
+
+commit a89e53c42de11fbfe3d120802e8366edad1e262f
+Merge: 68539be bf3b979
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 19:07:17 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit 68539bea4c41ede6d0f03eacc8f8fcad72ebb7d7
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 19:04:13 2016 -0500
+
+    fix heros
+
+commit bf3b979f59a22fed32e5abb7bc354c2d83a91c1a
+Merge: 7b06da7 aca7863
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 18:54:41 2016 -0500
+
+    Merge branch 'development' of https://github.com/cs373gc-fall-2016/SWEGods into development
+
+commit 7b06da7a2f609e457f5835b9e4bd5b2e0b78bf52
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 18:54:21 2016 -0500
+
+    Naomi about and picture
+
+commit aca7863dcc87e4e579ff5e5eafa2dca750865a72
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 18:47:12 2016 -0500
+
+    add keepcalm image
+
+commit 92e4940d48237149cf62b9dce26dd1cac410188a
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 18:41:07 2016 -0500
+
+    update about page
+
+commit 5f5f4c85894d44b1a0da64d9e6b420e3ea724baf
+Merge: 79441d7 64264ba
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 18:31:55 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit 79441d765796b559dd324a5812dc2ba9b496fd31
+Author: Ben Lin <ben.lin9@gmail.com>
+Date:   Thu Oct 20 18:31:48 2016 -0500
+
+    updated ben's bio, #5
+
+commit 64264ba3710d6472d9cc9b88113ced035d0820bf
+Author: dnmartinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 18:23:46 2016 -0500
+
+    Delete old uml
+
+commit ebda52cb1548964c0f53b444fa252edb059bd290
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Thu Oct 20 18:22:52 2016 -0500
+
+    final uml file
+
+commit 3f947c09085f666cacb54f77ba83678ace0607b3
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 18:03:42 2016 -0500
+
+    update unit tests closes #3 closes #4
+
+commit c2afba31f0f1a08262b558b359fa26836597c63a
+Author: ledennis <dennisle@wireless-10-147-66-74.public.utexas.edu>
+Date:   Thu Oct 20 17:39:27 2016 -0500
+
+    Update about purpose
+
+commit 98690c8a10c9629f948cdc322b4fd2c423dc6558
+Author: ledennis <dennisle@wireless-10-147-66-74.public.utexas.edu>
+Date:   Thu Oct 20 17:09:42 2016 -0500
+
+    Added image to Dennis
+
+commit 35f78f32192a203913796ac4b9600910d85c8cbc
+Author: ledennis <dennisle@wireless-10-147-66-74.public.utexas.edu>
+Date:   Thu Oct 20 17:01:31 2016 -0500
+
+    Added makefile, checks for files
+
+commit f2b60c683c8aab99028cb0604a7172033966564f
+Author: ledennis <dennisle@wireless-10-147-66-74.public.utexas.edu>
+Date:   Thu Oct 20 16:56:34 2016 -0500
+
+    Added travis file
+
+commit d6c715fcd2d7dbb3a93fbd89a194fc7f4c0855f4
+Author: ledennis <dennisle@wireless-10-147-66-74.public.utexas.edu>
+Date:   Thu Oct 20 16:54:02 2016 -0500
+
+    Updated about Dennis, removed .DS_Store from git
+
+commit ad242f33bf75ceae0f5fbbbf13d9f703df01cc29
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 16:09:21 2016 -0500
+
+    update unuttests, close #11, close #7
+
+commit 53c30c9de1f2acd4b22a1b4ce28c6fb39e16593c
+Author: Salih Horozovic <Sali@wireless-10-147-145-27.public.utexas.edu>
+Date:   Thu Oct 20 15:02:40 2016 -0500
+
+    added jQuery so the dropdown navigation menu can work in mobile
+
+commit 4a19e7e8fdeff74f27864273d674e9601ef39ce5
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Oct 20 14:51:48 2016 -0500
+
+    add unittests closes #11
+
+commit eaf1818b35738c0e30a925a64f84893efb5e8e0e
+Author: Salih Horozovic <Sali@wireless-10-147-145-27.public.utexas.edu>
+Date:   Thu Oct 20 14:25:22 2016 -0500
+
+    added my about page pic
+
+commit 240ab3db6af6e86c97127bbe635d622dfac6eed8
+Author: Salih Horozovic <Sali@Salihs-MBP.attlocal.net>
+Date:   Thu Oct 20 07:50:18 2016 -0500
+
+    added links to individual creature god and heros pages
+
+commit cc122df85314100918cbd85610b10dc7f79cf609
+Merge: 815c874 4bf22be
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Oct 19 22:04:36 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit 815c8747f269973d9a3e3ab3d4a2250bcd24cdaa
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Oct 19 22:03:21 2016 -0500
+
+    update
+
+commit 4bf22befcb345f26c2daa90f4215f775f655b130
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 22:00:07 2016 -0500
+
+    fixed links to myths and added stories
+
+commit b3fcc9e90be0f28eee017a3fd1a7bf096d14c344
+Merge: 6c060b0 73e2aa7
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 21:58:36 2016 -0500
+
+    Merge branch 'development' of https://github.com/cs373gc-fall-2016/SWEGods into development
+
+commit 73e2aa7ef29dd083a259ce76714507f39111bdc4
+Author: dnmartinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 21:56:18 2016 -0500
+
+    uml file
+
+commit 6c060b012b9c548aabf429d2851d6af428bb9d65
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 21:48:39 2016 -0500
+
+    wrong file name fixed
+
+commit 6e69aec0642014bad4083db66661d293f21ee4d0
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 21:45:54 2016 -0500
+
+    forgot </a>
+
+commit 39ea30bc68160b433ae9386835a1925a6d4b108f
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 21:39:39 2016 -0500
+
+    Added stories
+
+commit c6832673be2664da041bf1aa6bdc58ea15ab0ae9
+Author: Salih Horozovic <Sali@wireless-10-147-145-27.public.utexas.edu>
+Date:   Wed Oct 19 21:19:03 2016 -0500
+
+    linked images and navigation bar
+
+commit 6c53eeef2181e5851a79215f8a967bc3eb8102da
+Merge: 273b2de 32a4f9d
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Oct 19 20:23:33 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit 273b2de8e8a3010afed0167f5f6f74964e546548
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Wed Oct 19 20:23:27 2016 -0500
+
+    update about page
+
+commit 32a4f9d72fb49181bf115aea161bde519e01fe8b
+Author: Salih Horozovic <Sali@wireless-10-147-145-27.public.utexas.edu>
+Date:   Wed Oct 19 19:35:35 2016 -0500
+
+    changed stories to myths
+
+commit 2dc81004dbf02512457c044d5e5847a48d90ec16
+Author: Salih Horozovic <Sali@wireless-10-147-145-27.public.utexas.edu>
+Date:   Wed Oct 19 19:23:52 2016 -0500
+
+    added images for individual static pages
+
+commit f941794757a3f439631613ab81860236785d8fcd
+Author: Salih Horozovic <Sali@Salihs-MBP.attlocal.net>
+Date:   Wed Oct 19 17:23:44 2016 -0500
+
+    changed from myth to stories in carousel
+
+commit 66fc8b96998a86a66e7e16e5fd07eac8289f42ca
+Author: Salih Horozovic <Sali@Salihs-MBP.attlocal.net>
+Date:   Wed Oct 19 17:20:20 2016 -0500
+
+    added the navigation bar to the rest of the pages
+
+commit 2d42df3317aa84bcb51262d8e52046860d9546dc
+Author: ledennis <dennisle@Denniss-MacBook-Pro.local>
+Date:   Wed Oct 19 17:03:01 2016 -0500
+
+    Changed tab name to better describe site
+
+commit a0f8f6b46f319a8e5886eef31c1a99552b3754a4
+Author: root <ledennis@utexas.edu>
+Date:   Wed Oct 19 21:58:52 2016 +0000
+
+    Site is now live, added gitignore, renamed flask file
+
+commit 3f248cda832e035c25a8f6e16cad4744d2105935
+Author: Salih Horozovic <Sali@Salihs-MBP.attlocal.net>
+Date:   Wed Oct 19 16:41:48 2016 -0500
+
+    added static info pages for creatures and myths
+
+commit a6da1af39bdfdde0ed0b3840e1a4174e364f5bf8
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Wed Oct 19 07:42:12 2016 -0500
+
+    fixing syntax for 404 error
+
+commit 5b85634437363cf8b4bcbfd99533625e607ac6ba
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Wed Oct 19 07:34:59 2016 -0500
+
+    updating directory structure, fixing filepaths to be relative server paths, updating code to reflect changes and new files
+
+commit 0c3466cb1336e43de4158d661d6412611e41e107
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Wed Oct 19 00:05:20 2016 -0500
+
+    Added creatures.html, myths.html, and files with the myths
+
+commit 0d791b80689035e508e5a5ab3f95ff575543c2a6
+Author: Salih Horozovic <Sali@Salihs-MBP.attlocal.net>
+Date:   Tue Oct 18 22:56:03 2016 -0500
+
+    added info to the individual god pages
+
+commit dcbd1291c8d43b6f46a6066a9b0ad890c5918151
+Author: Salih Horozovic <Sali@Salihs-MBP.attlocal.net>
+Date:   Tue Oct 18 21:43:24 2016 -0500
+
+    added info to the hero static pages
+
+commit 587f25d053610dd6041b9d51f57746879f72d79b
+Author: dnmartinez <dnaomi94@utexas.edu>
+Date:   Tue Oct 18 18:34:29 2016 -0500
+
+    Update heros.html
+
+commit 37fc22ae6dd6be04e9bb9a22e2bf2723355933c0
+Author: Naomi Martinez <dnaomi94@utexas.edu>
+Date:   Tue Oct 18 17:30:30 2016 -0500
+
+    heros.html, gods.html
+
+commit de755a133fd9ee98ae7a3475e1f8695b2934d6d7
+Author: Salih Horozovic <Sali@wireless-10-147-52-183.public.utexas.edu>
+Date:   Tue Oct 18 16:24:29 2016 -0500
+
+    basic hero detal page for hercules
+
+commit e708c2314a45fa149c8d1500fe3787b2ca3a4e43
+Author: ledennis <dennisle@wireless-10-146-35-107.public.utexas.edu>
+Date:   Tue Oct 18 15:59:12 2016 -0500
+
+    Took out quotes from Naomi
+
+commit ae1ac3a5f33c3fd77cad70ed5fe18e7d35f059ad
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Mon Oct 17 21:19:47 2016 -0500
+
+    update about.html fixes #3
+
+commit 3b3b45addd4ba49f04275a932741e460fc8d5371
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Mon Oct 17 20:28:23 2016 -0500
+
+    add headshot
+
+commit 6af6c1318b88c9bb3bf268ad436078ec69943bd1
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Mon Oct 17 20:23:44 2016 -0500
+
+    add about page closes #3
+
+commit ecf158d6c905cd70c3d648c3c33e2fae98b617cf
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Sun Oct 16 22:17:26 2016 -0500
+
+    dummy pages for the models pages
+
+commit 1ab6e20ed8581bde42facbe29987a4fbc9d539bd
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Sun Oct 16 17:32:16 2016 -0500
+
+    merging the rest of salih's work into the new repo
+
+commit 5bbb42de301560dc07f604114a30bfff29183646
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Sun Oct 16 17:16:11 2016 -0500
+
+    fixing typo in if-elif set, added 404 error codes
+
+commit 199d3e42680213ab901e40d175dbe7688c9a6833
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Sun Oct 16 17:08:01 2016 -0500
+
+    adding code to handle Salih's project structure for easier merging
+
+commit 3d04abb6bbd8abe5767b3bb7b2de25b29e041f94
+Author: Susmita Hossain <shuuhossain@utexas.edu>
+Date:   Sun Oct 16 15:58:22 2016 -0500
+
+    initial commit; can serve static files, and error messages use a dummy template that needs to be modified

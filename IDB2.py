@@ -35,6 +35,7 @@ def index():
 		return send_file(app.config['STATIC_SPLASH_PAGE'])
 	return error_wrapper('Hello, World! <SPLASH PAGE NOT YET ADDED>'), 404
 
+# Connects to the about page
 @app.route('/about')
 @app.route('/about/')
 def about_page():
@@ -42,6 +43,7 @@ def about_page():
 		return send_file(app.config['STATIC_ABOUT_PAGE'])
 	return error_wrapper('About page to be added'), 404
 
+# Connects to gods page
 @app.route('/gods')
 @app.route('/gods/')
 def gods_model():
@@ -49,6 +51,7 @@ def gods_model():
 		return send_file(app.config['STATIC_GODS_LIST'])
 	return error_wrapper('Gods Model page to be added'), 404
 
+# Connects to heroes page
 @app.route('/heroes')
 @app.route('/heroes/')
 def heroes_model():
@@ -56,6 +59,7 @@ def heroes_model():
 		return send_file(app.config['STATIC_HEROES_LIST'])
 	return error_wrapper('Heroes Model page to be added'), 404
 
+# Connects to creatures page
 @app.route('/creatures')
 @app.route('/creatures/')
 def creatures_model():
@@ -63,6 +67,7 @@ def creatures_model():
 		return send_file(app.config['STATIC_CREATURES_LIST'])
 	return error_wrapper('Creatures Model page to be added'), 404
 
+# Connects to myths page
 @app.route('/myths')
 @app.route('/myths/')
 def myths_model():
@@ -79,6 +84,7 @@ def god_page(god):
                                god.lower() + '.html', as_attachment=False)
 	return error_wrapper('Page for god: ' + god + ' to be added'), 404
 
+# Links to specific hero given by hero name
 @app.route('/heroes/<string:hero>')
 @app.route('/heroes/<string:hero>/')
 def hero_page(hero):
@@ -87,6 +93,7 @@ def hero_page(hero):
                                hero.lower() + '.html', as_attachment=False)
 	return error_wrapper('Page for hero: ' + hero + ' to be added'), 404
 
+# Links to specific creature given by creature name
 @app.route('/creatures/<string:creature>')
 @app.route('/creatures/<string:creature>/')
 def creature_page(creature):
@@ -95,6 +102,7 @@ def creature_page(creature):
                                creature.lower() + '.html', as_attachment=False)
 	return error_wrapper('Page for creature: ' + creature + ' to be added'), 404
 
+# Links to specific myth given by myth name
 @app.route('/myths/<string:myth>')
 @app.route('/myths/<string:myth>/')
 def myth_page(myth):
