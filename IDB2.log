@@ -1,3 +1,9 @@
+commit 5bc3c2ea50f866d693121677dc96a582d0401320
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 16:10:01 2016 -0500
+
+    Renamed to proper files, make now creates log
+
 commit 57648c4fe47677d03070f702ba70ddb5f20b8811
 Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
 Date:   Thu Nov 3 15:18:35 2016 -0500

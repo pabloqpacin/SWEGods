@@ -25,10 +25,11 @@ app.config['STATIC_FONTS_FOLDER'] = os.path.join('.', 'static', 'fonts')
 app.config['STATIC_JS_FOLDER'] = os.path.join('.', 'static', 'js')
 app.config['STATIC_IMAGES_FOLDER'] = os.path.join('.', 'static', 'img')
 
+# Shows error message
 def error_wrapper(content):
 	return render_template('error_template.html', error_message=content)
 
-
+# Splash page
 @app.route('/')
 def index():
 	if os.path.exists(app.config['STATIC_SPLASH_PAGE']):
