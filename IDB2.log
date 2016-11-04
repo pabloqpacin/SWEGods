@@ -1,3 +1,46 @@
+commit abab86822787c583fa9e55987d6f40e319b20d10
+Merge: bdcac4a 4072f66
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 18:40:22 2016 -0500
+
+    Fixing merge issue
+
+commit bdcac4ac3f38e9aac4ea1c91f19001961ef7eafb
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 18:33:49 2016 -0500
+
+    updated commits
+
+commit 4072f664e814243d94a4af6ca0dc9c9e0410494e
+Author: root <ledennis@utexas.edu>
+Date:   Thu Nov 3 22:54:07 2016 +0000
+
+    Slide title works now
+
+commit fd206a41b4cabf9293bdeea91faa4bb7dea976b4
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 17:40:24 2016 -0500
+
+    Typo
+
+commit 141a579ab62bfe18cdd4b05eeec46679cc5f499b
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 17:39:02 2016 -0500
+
+    Titles not showing up
+
+commit 844e1b99804b78a8303fa8cda20dc5ce68fcf1ea
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 17:37:34 2016 -0500
+
+    Changed slider names
+
+commit 384429e61a0bb0cb35d57cd93d37ccf223db5cf8
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 16:23:52 2016 -0500
+
+    make file creates log, html, updated travis to run make test
+
 commit 5bc3c2ea50f866d693121677dc96a582d0401320
 Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
 Date:   Thu Nov 3 16:10:01 2016 -0500
