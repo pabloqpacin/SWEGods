@@ -1,3 +1,22 @@
+commit 4cea8bcda7c40c9786d609774df488e29f1b3947
+Merge: 25e0233 cfbcb28
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 19:21:33 2016 -0500
+
+    Merge branch 'development' of github.com:cs373gc-fall-2016/SWEGods into development
+
+commit cfbcb28691330d16a72ce940c0bf4c63bce65735
+Author: Vinh Nguyen <vinhnguyentx@utexas.edu>
+Date:   Thu Nov 3 19:20:50 2016 -0500
+
+    update about page
+
+commit 25e0233bf080aa82cf63793609038a5bcb0e1af5
+Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
+Date:   Thu Nov 3 19:03:30 2016 -0500
+
+    Log updated
+
 commit abab86822787c583fa9e55987d6f40e319b20d10
 Merge: bdcac4a 4072f66
 Author: ledennis <dennisle@wireless-10-147-69-96.public.utexas.edu>
