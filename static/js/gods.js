@@ -1,55 +1,67 @@
-var gods = [{
-      id: 1,
-      name: "Zeus",
-      power: "Sky, weather, kings, fate",
-      parents: "Kronos and Rhea",
-      olympian: "yes",
-      children: "Aphrodite, Phersephone, Hercules",
-      symbol: "Lightning bolt, eagle, bull",
-      counterpart: "Jupiter"
-  },{
-    id: 2,
-    name: "Poseidon",
-    power: "King of the Sea, earthquakes, floods, horses",
-    parents: "Kronos and Rhea",
-    olympian: "yes",
-    children: "Triton, Nerids",
-    symbol: "Trident, Bull, horse, dolphin",
-    counterpart: "Neptune"
-  },{
-    id: 3,
-    name: "Hades",
-    power: "God of the dead, king of the underworld",
-    parents: "Kronos and Rhea",
-    olympian: "yes",
-    children: "Cerberus, the Erinyes",
-    symbol: "Royal sceptre, cornucopia",
-    counterpart: "Pluto"
-  }];
+var Table = Reactable.Table,
+    unsafe = Reactable.unsafe;
 
-  function onRowSelect(row, isSelected){
-    window.location.href = '/gods/' + row.name.toLowerCase().replace(/ /gi,'');
-  }
+var bgColors = { "Default": "#81b71a",
+                    "Blue": "#00B1E1",
+                    "Cyan": "#37BC9B",
+                    "Green": "#8CC152",
+                    "Red": "#E9573F",
+                    "Yellow": "#F6BB42",
+};
 
-  var selectRowProp = {
-    mode: "radio",
-    clickToSelect: true,
-    bgColor: "rgb(238, 193, 213)",
-    onSelect: onRowSelect
-  };
+ReactDOM.render(
+  <div>
+    <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}} data={[
+        {
+          'Name': unsafe('<a href="/gods/zeus">Zeus</a>'),
+          'Power': unsafe("Sky, weather, kings, fate"),
+          'Parents': unsafe("Kronos and Rhea"),
+          'Olympian': unsafe("yes"),
+          'Children': unsafe("Aphrodite, Phersephone, Hercules"),
+          'Symbol': unsafe("Lightning bolt, eagle, bull"),
+          'Counterpart': unsafe("Jupiter")
+        },
+        {
+          'Name': unsafe('<a href="/gods/poseidon">Poseidon</a>'),
+          'Power': unsafe("King of the Sea, earthquakes, floods, horses"),
+          'Parents': unsafe("Kronos and Rhea"),
+          'Olympian': unsafe("yes"),
+          'Children': unsafe("Triton, Nerids"),
+          'Symbol': unsafe("Trident, Bull, horse, dolphin"),
+          'Counterpart': unsafe("Neptune")
+        },
+        {
+          'Name': unsafe('<a href="/gods/hades">Hades</a>'),
+          'Power': unsafe("God of the dead, king of the underworld"),
+          'Parents': unsafe("Kronos and Rhea"),
+          'Olympian': unsafe("yes"),
+          'Children': unsafe("Cerberus, the Erinyes"),
+          'Symbol': unsafe("Royal sceptre, cornucopia"),
+          'Counterpart': unsafe("Pluto")
+        },
+    ]}
+    sortable={[
+      {
+          column: 'Name',
+          sortFunction: function(a, b){
+              // Sort by last name
+              var nameA = a
+              var nameB = b
 
-  ReactDOM.render(
-    <div style={{marginTop: 50 + 'px'}}>
-      <BootstrapTable data={gods} striped={true} hover={true} pagination={true} selectRow={selectRowProp}>
-          <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="name" dataSort={true}>Name</TableHeaderColumn>
-          <TableHeaderColumn dataField="power" dataSort={true}>Power</TableHeaderColumn>
-          <TableHeaderColumn dataField="parents" dataSort={true}>Parents</TableHeaderColumn>
-          <TableHeaderColumn dataField="olympian" dataSort={true}>Olympian</TableHeaderColumn>
-          <TableHeaderColumn dataField="children" dataSort={true}>Children</TableHeaderColumn>
-          <TableHeaderColumn dataField="symbol" dataSort={true}>Symbol</TableHeaderColumn>
-          <TableHeaderColumn dataField="counterpart" dataSort={true}>Counterpart</TableHeaderColumn>
-      </BootstrapTable>
-    </div>,
-      document.getElementById("gods")
-  );
+              return nameA.localeCompare(nameB);
+          }
+      },
+      'Power',
+      'Parents',
+      'Olympian',
+      'Children',
+      'Symbol',
+      'Counterpart'
+    ]}
+
+    filterable={['Name', 'Power']}
+
+    defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={2} pageButtonLimit={5}/>
+  </div>,
+    document.getElementById('gods')
+);
