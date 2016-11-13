@@ -1,3 +1,5 @@
+console.log(GodsList);
+
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
 
@@ -9,37 +11,25 @@ var bgColors = { "Default": "#81b71a",
                     "Yellow": "#F6BB42",
 };
 
+var godsinfo = [];
+for (var i = 0; i < GodsList.length; i++) {
+    var god = {
+      'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + GodsList[i].name + '</a>'),
+      'Roman Name': unsafe(GodsList[i].romanname),
+      'Symbol': unsafe(GodsList[i].symbol),
+      'Power': unsafe(GodsList[i].power),
+      'Father': unsafe(GodsList[i].father),
+      'Mother': unsafe(GodsList[i].mother)
+    };
+    godsinfo.push(god);
+}
+
 ReactDOM.render(
   <div>
-    <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}} data={[
-        {
-          'Name': unsafe('<a href="/gods/zeus">Zeus</a>'),
-          'Power': unsafe("Sky, weather, kings, fate"),
-          'Parents': unsafe("Kronos and Rhea"),
-          'Olympian': unsafe("yes"),
-          'Children': unsafe("Aphrodite, Phersephone, Hercules"),
-          'Symbol': unsafe("Lightning bolt, eagle, bull"),
-          'Counterpart': unsafe("Jupiter")
-        },
-        {
-          'Name': unsafe('<a href="/gods/poseidon">Poseidon</a>'),
-          'Power': unsafe("King of the Sea, earthquakes, floods, horses"),
-          'Parents': unsafe("Kronos and Rhea"),
-          'Olympian': unsafe("yes"),
-          'Children': unsafe("Triton, Nerids"),
-          'Symbol': unsafe("Trident, Bull, horse, dolphin"),
-          'Counterpart': unsafe("Neptune")
-        },
-        {
-          'Name': unsafe('<a href="/gods/hades">Hades</a>'),
-          'Power': unsafe("God of the dead, king of the underworld"),
-          'Parents': unsafe("Kronos and Rhea"),
-          'Olympian': unsafe("yes"),
-          'Children': unsafe("Cerberus, the Erinyes"),
-          'Symbol': unsafe("Royal sceptre, cornucopia"),
-          'Counterpart': unsafe("Pluto")
-        },
-    ]}
+    <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
+
+    data={godsinfo}
+
     sortable={[
       {
           column: 'Name',
@@ -51,17 +41,16 @@ ReactDOM.render(
               return nameA.localeCompare(nameB);
           }
       },
-      'Power',
-      'Parents',
-      'Olympian',
-      'Children',
+      'Roman Name',
       'Symbol',
-      'Counterpart'
+      'Power',
+      'Father',
+      'Mother'
     ]}
 
-    filterable={['Name', 'Power']}
+    filterable={['Name', 'Roman Name', 'Symbol', 'Power', 'Father', 'Mother']}
 
-    defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={2} pageButtonLimit={5}/>
+    defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={5} pageButtonLimit={100}/>
   </div>,
     document.getElementById('gods')
 );
