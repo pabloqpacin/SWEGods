@@ -14,7 +14,7 @@ var bgColors = { "Default": "#81b71a",
 var heroesinfo = [];
 for (var i = 0; i < HeroesList.length; i++) {
     var hero = {
-      'Name': unsafe('<a href="/gods/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
+      'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
       'Type': unsafe(HeroesList[i].hero_type),
       'Power': unsafe(HeroesList[i].power),
       'Home': unsafe(HeroesList[i].home),
