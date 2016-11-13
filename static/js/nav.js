@@ -35,7 +35,7 @@ function Application() {
                         <a href="/static/heroes.html" style={{color: bgColors.Yellow}}>Heroes</a>
                     </li>
                     <li>
-                        <a href="/static/creatures.html" style={{color: bgColors.Yellow}}>Creatures</a>
+                        <a href="/static/locations.html" style={{color: bgColors.Yellow}}>Locations</a>
                     </li>
                     <li>
                         <a href="/static/myths.html" style={{color: bgColors.Yellow}}>Myths</a>
