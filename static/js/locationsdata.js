@@ -24,6 +24,8 @@ var LocationsList = [{"name":"Arcadia","altname":"Arcadia","myth":"None","locati
 {"name":"Ithaca","altname":"Ithaka","myth":"The Odyssey","location_type":"Island","gods":"Odysseus, Poseidon"},
 {"name":"Lerna","altname":"Myloi","myth":"12 Labors of Hercules: Lernaean Hydra","location_type":"Lake","gods":"Heracles, Hera"},
 {"name":"Mount Olympus","altname":"Olympus","myth":"The Myth of Tantalus, The Titans and Titanomachy","location_type":"Mountain","gods":"Tantalus,Pelops,Zeus,Demeter, All the Gods"},
-{"name":"Nemea","altname":"Koutsoumadi","myth":"12 Labors of Hercules: Nemean Lion","location_type":"Village","gods":"Heracles, Athena"},{"name":"Sparta","altname":"Lacedaemon","myth":"N/A","location_type":"City","gods":"Leda, Ares, Castor, Pollux"},
-{"name":"Tauris","altname":"Crimea","myth":"Myth of Iphigenia","location_type":"Peninsula","gods":"Artemis, Iphigenia"},{"name":"The Underworld","altname":"The Kingdom of the Dead","myth":"The Myth of Hades and Persephone","location_type":"Afterlife","gods":"Hades, Persephone"},
+{"name":"Nemea","altname":"Koutsoumadi","myth":"12 Labors of Hercules: Nemean Lion","location_type":"Village","gods":"Heracles, Athena"},
+{"name":"Sparta","altname":"Lacedaemon","myth":"N/A","location_type":"City","gods":"Leda, Ares, Castor, Pollux"},
+{"name":"Tauris","altname":"Crimea","myth":"Myth of Iphigenia","location_type":"Peninsula","gods":"Artemis, Iphigenia"},
+{"name":"The Underworld","altname":"The Kingdom of the Dead","myth":"The Myth of Hades and Persephone","location_type":"Afterlife","gods":"Hades, Persephone"},
 {"name":"Troy","altname":"Ilion, Troia, Ilium","myth":"Trojan War","location_type":"City","gods":"Achilles, Odysseus"}];
