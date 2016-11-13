@@ -50,7 +50,7 @@ ReactDOM.render(
 
     filterable={['Name', 'Roman Name', 'Symbol', 'Power', 'Father', 'Mother']}
 
-    defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={5} pageButtonLimit={100}/>
+    defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={8} pageButtonLimit={100}/>
   </div>,
     document.getElementById('gods')
 );
