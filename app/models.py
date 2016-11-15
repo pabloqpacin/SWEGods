@@ -141,18 +141,18 @@ class Myth(db.Model):
 
     __tablename__ = 'myth'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    main_characters = db.relationship('Character',
-                                      secondary=myths_to_characters)
-    related_gods = db.relationship('God', secondary=myths_to_gods)
-    summary = db.Column(db.String)
-    impact_on_greek_life = db.Column(db.String)
+    name = db.Column(db.String, primary_key=True)
+    description = db.Column(db.String)
+    gods = db.Column(db.String, db.ForeignKey('god.name'))
+    non_gods = db.Column(db.String, db.ForeignKey('hero.name'))
+    place = db.Column(db.String)
+    theme = db.Column(db.String)
 
-    def __init__(self, name, summary, impact_on_greek_life):
+    def __init__(self, name, description, place, theme):
         self.name = name
-        self.summary = summary
-        self.impact_on_greek_life = impact_on_greek_life
+        self.description = description
+        self.place = place
+        self.theme = theme
 
     def __repr__(self):
         return '<Myth %r>' % self.name
