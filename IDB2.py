@@ -96,17 +96,39 @@ def god_page(god):
 	god_info = []
 	for i in data:
 		if i['name'].lower() == god:
-			god_info = i.values()
+			god_info.append(i['name'])
+			god_info.append(i['romanname'])
+			god_info.append(i['symbol'])
+			god_info.append(i['power'])
+			god_info.append(i['father'])
+			god_info.append(i['mother'])
 	return render_template('godtemp.html', god = god_info)
 
 # Links to specific hero given by hero name
+# @app.route('/heroes/<string:hero>')
+# @app.route('/heroes/<string:hero>/')
+# def hero_page(hero):
+# 	if os.path.exists(os.path.join(app.config['STATIC_HEROES_FOLDER'], hero.lower() + ".html")):
+# 		return send_from_directory(app.config['STATIC_HEROES_FOLDER'],
+#                                hero.lower() + '.html', as_attachment=False)
+# 	return error_wrapper('Page for hero: ' + hero + ' to be added'), 404
+
 @app.route('/heroes/<string:hero>')
 @app.route('/heroes/<string:hero>/')
 def hero_page(hero):
-	if os.path.exists(os.path.join(app.config['STATIC_HEROES_FOLDER'], hero.lower() + ".html")):
-		return send_from_directory(app.config['STATIC_HEROES_FOLDER'],
-                               hero.lower() + '.html', as_attachment=False)
-	return error_wrapper('Page for hero: ' + hero + ' to be added'), 404
+	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+	json_url = os.path.join(SITE_ROOT, 'static/js', 'heroesinfo.json')
+	data = json.load(open(json_url))
+	hero_info = []
+	for i in data:
+		if i['name'].lower() == hero:
+			hero_info.append(i['name'])
+			hero_info.append(i['hero_type'])
+			hero_info.append(i['power'])
+			hero_info.append(i['home'])
+			hero_info.append(i['father'])
+			hero_info.append(i['mother'])
+	return render_template('herotemp.html', hero = hero_info)
 
 # Links to specific creature given by creature name
 @app.route('/locations/<string:location>')
