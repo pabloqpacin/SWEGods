@@ -156,13 +156,30 @@ def location_page(location):
 	return render_template('locationtemp.html', location = location_info)
 
 # Links to specific myth given by myth name
+# @app.route('/myths/<string:myth>')
+# @app.route('/myths/<string:myth>/')
+# def myth_page(myth):
+# 	if os.path.exists(os.path.join(app.config['STATIC_MYTHS_FOLDER'], myth.lower() + ".html")):
+# 		return send_from_directory(app.config['STATIC_MYTHS_FOLDER'],
+#                                myth.lower() + '.html', as_attachment=False)
+# 	return error_wrapper('Page for myth: ' + myth + ' to be added'), 404
+
 @app.route('/myths/<string:myth>')
 @app.route('/myths/<string:myth>/')
 def myth_page(myth):
-	if os.path.exists(os.path.join(app.config['STATIC_MYTHS_FOLDER'], myth.lower() + ".html")):
-		return send_from_directory(app.config['STATIC_MYTHS_FOLDER'],
-                               myth.lower() + '.html', as_attachment=False)
-	return error_wrapper('Page for myth: ' + myth + ' to be added'), 404
+	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+	json_url = os.path.join(SITE_ROOT, 'static/js', 'mythsinfo.json')
+	data = json.load(open(json_url))
+	myth_info = []
+	for i in data:
+		if i['name'].lower() == myth:
+			myth_info.append(i['name'])
+			myth_info.append(i['description'])
+			myth_info.append(i['theme'])
+			myth_info.append(i['place'])
+			myth_info.append(i['gods'])
+			myth_info.append(i['characters'])
+	return render_template('mythtemp.html', myth = myth_info)
 
 @app.route('/static/<path:folder>/<string:file>')
 def static_files(folder, file):
