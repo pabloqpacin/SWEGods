@@ -74,56 +74,63 @@ class Character(db.Model):
         return '<Character %r>' % self.name
 
 
-class God(Character):
+class God(db.Model):
     """
     Information about a god in Greek mythology.
     """
 
+    __tablename__ = 'gods'
+
+    name = db.Column(db.String, primary_key=True)
     power = db.Column(db.String)
-    olympian = db.Column(db.Boolean)
-    children = db.relationship('Character', secondary=gods_to_children,
-                               backref=db.backref('parents', lazy='dynamic'))
+    roman_name = db.Column(db.String)
+    power = db.Column(db.String)
     symbol = db.Column(db.String)
+    olympian = db.Column(db.Boolean)
+    father_god = db.Column(db.String, db.ForeignKey)
     roman_counterpart = db.Column(db.String)
 
-    def __init__(self, name, power, olympian, symbol, roman_counterpart):
-        super().__init__(self, name)
+    def __init__(self, name, roman_name, power, symbol):
+        self.name = name
         self.power = power
-        self.olympian = olympian
+        self.roman_name = roman_name
+        self.power = power
         self.symbol = symbol
-        self.roman_counterpart = roman_counterpart
 
     def __repr__(self):
         return '<God %r>' % self.name
 
 
-class Hero(Character):
+class Hero(db.Model):
     """
     Information about a hero in Greek mythology.
     """
 
-    hero_type = db.Column(db.String)
-    strength_or_power = db.Column(db.String)
-    death = db.Column(db.String)
-    hero_origins = db.Column(db.String)
+    __tablename__ = 'heroes'
 
-    def __init__(self, name, hero_type, strength_or_power, death, hero_origins):
-        super().__init__(self, name)
+    name = db.Column(db.String, primary_key=True)
+    hero_type = db.Column(db.String)
+    power = db.Column(db.String)
+    home = db.Column(db.String)
+
+    def __init__(self, name, hero_type, power, home):
+        self.name = name
         self.hero_type = hero_type
-        self.strength_or_power = strength_or_power
-        self.death = death
-        self.hero_origins = hero_origins
+        self.power = power
+        self.home = home
 
     def __repr__(self):
         return '<Hero %r>' % self.name
 
 
-class Creature(Character):
+class Location(db.Model):
     """
-    Information about a creature from Greek mythology,
-    excludes gods and heroes.
+    Information about a location from Greek mythology.
     """
 
+    __tablename__ = 'locations'
+
+    name = db.Column(db.String, primary_key=True)
     creature_type = db.Column(db.String)
     characteristics = db.Column(db.String)
     related_characters = db.relationship('Character',
@@ -143,6 +150,8 @@ class Myth(db.Model):
     """
     Information about a myth from Greek mythology.
     """
+
+    __tablename__ = 'myths'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
