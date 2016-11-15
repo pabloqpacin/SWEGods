@@ -58,28 +58,12 @@ Maps myths to related gods
 myths_to_gods = db.Table('myths_to_gods', myth_column(), god_column())
 
 
-class Character(db.Model):
-    """
-    Base class for gods, heroes, and creatures.
-    """
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    parents = db.relationship('Character', secondary=characters_to_parents)
-
-    def __init__(self, name):
-        self.name = name
-
-    def __repr__(self):
-        return '<Character %r>' % self.name
-
-
 class God(db.Model):
     """
     Information about a god in Greek mythology.
     """
 
-    __tablename__ = 'gods'
+    __tablename__ = 'god'
 
     name = db.Column(db.String, primary_key=True)
     power = db.Column(db.String)
@@ -87,7 +71,9 @@ class God(db.Model):
     power = db.Column(db.String)
     symbol = db.Column(db.String)
     olympian = db.Column(db.Boolean)
-    father_god = db.Column(db.String, db.ForeignKey)
+    father_god = db.Column(db.String, db.ForeignKey('god.name'), nullable=True)
+    father_hero = db.Column(db.String, db.ForeignKey('hero.name'),
+                            nullable=True)
     roman_counterpart = db.Column(db.String)
 
     def __init__(self, name, roman_name, power, symbol):
@@ -106,7 +92,7 @@ class Hero(db.Model):
     Information about a hero in Greek mythology.
     """
 
-    __tablename__ = 'heroes'
+    __tablename__ = 'hero'
 
     name = db.Column(db.String, primary_key=True)
     hero_type = db.Column(db.String)
@@ -128,7 +114,7 @@ class Location(db.Model):
     Information about a location from Greek mythology.
     """
 
-    __tablename__ = 'locations'
+    __tablename__ = 'location'
 
     name = db.Column(db.String, primary_key=True)
     creature_type = db.Column(db.String)
@@ -151,7 +137,7 @@ class Myth(db.Model):
     Information about a myth from Greek mythology.
     """
 
-    __tablename__ = 'myths'
+    __tablename__ = 'myth'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
