@@ -1,4 +1,4 @@
-var LocationsList = [{"name":"Arcadia","altname":"Arcadia","myth":"None","location_type":"Wilderness","gods":"Atlanta, Callisto, Pan, Hermes"},
+[{"name":"Arcadia","altname":"Arcadia","myth":"None","location_type":"Wilderness","gods":"Atlanta, Callisto, Pan, Hermes"},
 {"name":"Lycia","altname":"Lycia","myth":"Coastal","location_type":"Bellerophon","gods":"Leto, Apollo, Artemis"},
 {"name":"Island of Seriphus","altname":"Seriphos","myth":"Perseus","location_type":"Island","gods":"Perseus"},
 {"name":"Thebes","altname":"Thebes","myth":"The story of Laius","location_type":"City","gods":"Heracles"},
@@ -27,4 +27,4 @@ var LocationsList = [{"name":"Arcadia","altname":"Arcadia","myth":"None","locati
 {"name":"Sparta","altname":"Lacedaemon","myth":"N/A","location_type":"City","gods":"Leda, Ares, Castor, Pollux"},
 {"name":"Tauris","altname":"Crimea","myth":"Myth of Iphigenia","location_type":"Peninsula","gods":"Artemis, Iphigenia"},
 {"name":"The Underworld","altname":"The Kingdom of the Dead","myth":"The Myth of Hades and Persephone","location_type":"Afterlife","gods":"Hades, Persephone"},
-{"name":"Troy","altname":"Ilion, Troia, Ilium","myth":"Trojan War","location_type":"City","gods":"Achilles, Odysseus"}];
+{"name":"Troy","altname":"Ilion, Troia, Ilium","myth":"Trojan War","location_type":"City","gods":"Achilles, Odysseus"}]

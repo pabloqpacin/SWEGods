@@ -131,13 +131,29 @@ def hero_page(hero):
 	return render_template('herotemp.html', hero = hero_info)
 
 # Links to specific creature given by creature name
+# @app.route('/locations/<string:location>')
+# @app.route('/locations/<string:location>/')
+# def creature_page(location):
+# 	if os.path.exists(os.path.join(app.config['STATIC_LOCATIONS_FOLDER'], location.lower() + ".html")):
+# 		return send_from_directory(app.config['STATIC_LOCATIONS_FOLDER'],
+#                                location.lower() + '.html', as_attachment=False)
+# 	return error_wrapper('Page for creature: ' + location + ' to be added'), 404
+
 @app.route('/locations/<string:location>')
 @app.route('/locations/<string:location>/')
-def creature_page(location):
-	if os.path.exists(os.path.join(app.config['STATIC_LOCATIONS_FOLDER'], location.lower() + ".html")):
-		return send_from_directory(app.config['STATIC_LOCATIONS_FOLDER'],
-                               location.lower() + '.html', as_attachment=False)
-	return error_wrapper('Page for creature: ' + location + ' to be added'), 404
+def location_page(location):
+	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+	json_url = os.path.join(SITE_ROOT, 'static/js', 'locationsinfo.json')
+	data = json.load(open(json_url))
+	location_info = []
+	for i in data:
+		if i['name'].lower() == location:
+			location_info.append(i['name'])
+			location_info.append(i['altname'])
+			location_info.append(i['location_type'])
+			location_info.append(i['myth'])
+			location_info.append(i['gods'])
+	return render_template('locationtemp.html', location = location_info)
 
 # Links to specific myth given by myth name
 @app.route('/myths/<string:myth>')
