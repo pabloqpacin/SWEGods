@@ -71,10 +71,10 @@ class God(db.Model):
     power = db.Column(db.String)
     symbol = db.Column(db.String)
     olympian = db.Column(db.Boolean)
-    father_god = db.Column(db.String, db.ForeignKey('god.name'), nullable=True)
-    father_hero = db.Column(db.String, db.ForeignKey('hero.name'),
-                            nullable=True)
-    roman_counterpart = db.Column(db.String)
+    father_god = db.Column(db.String, db.ForeignKey('god.name'))
+    father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
+    mother_god = db.Column(db.String, db.ForeignKey('god.name'))
+    mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))
 
     def __init__(self, name, roman_name, power, symbol):
         self.name = name
@@ -98,6 +98,10 @@ class Hero(db.Model):
     hero_type = db.Column(db.String)
     power = db.Column(db.String)
     home = db.Column(db.String)
+    father_god = db.Column(db.String, db.ForeignKey('god.name'))
+    father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
+    mother_god = db.Column(db.String, db.ForeignKey('god.name'))
+    mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))
 
     def __init__(self, name, hero_type, power, home):
         self.name = name
