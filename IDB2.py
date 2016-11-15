@@ -1,5 +1,7 @@
 from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort
 import os
+import json
+
 
 app = Flask(__name__)
 
@@ -77,13 +79,25 @@ def myths_model():
 	return error_wrapper('Myths Model page to be added'), 404
 
 #using string instead of path because we don't want '/' to count
+# @app.route('/gods/<string:god>')
+# @app.route('/gods/<string:god>/')
+# def god_page(god):
+# 	if os.path.exists(os.path.join(app.config['STATIC_GODS_FOLDER'], god.lower() + ".html")):
+# 		return send_from_directory(app.config['STATIC_GODS_FOLDER'],
+#                                god.lower() + '.html', as_attachment=False)
+# 	return error_wrapper('Page for god: ' + god + ' to be added'), 404
+
 @app.route('/gods/<string:god>')
 @app.route('/gods/<string:god>/')
 def god_page(god):
-	if os.path.exists(os.path.join(app.config['STATIC_GODS_FOLDER'], god.lower() + ".html")):
-		return send_from_directory(app.config['STATIC_GODS_FOLDER'],
-                               god.lower() + '.html', as_attachment=False)
-	return error_wrapper('Page for god: ' + god + ' to be added'), 404
+	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+	json_url = os.path.join(SITE_ROOT, 'static/js', 'godsinfo.json')
+	data = json.load(open(json_url))
+	god_info = []
+	for i in data:
+		if i['name'].lower() == god:
+			god_info = i.values()
+	return render_template('godtemp.html', god = god_info)
 
 # Links to specific hero given by hero name
 @app.route('/heroes/<string:hero>')
