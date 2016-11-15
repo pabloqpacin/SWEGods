@@ -6,57 +6,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5421/postgres'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# helper functions for columns
-def character_column():
-    return db.Column('character_id', db.Integer, db.ForeignKey('character.id'))
-
-def god_column():
-    return db.Column('god_id', db.Integer, db.ForeignKey('god.id'))
-
-def hero_column():
-    return db.Column('hero_id', db.Integer, db.ForeignKey('hero.id'))
-
-def creature_column():
-    return db.Column('creature_id', db.Integer, db.ForeignKey('creature.id'))
-
-def myth_column():
-    return db.Column('myth_id', db.Integer, db.ForeignKey('myth.id'))
-
-"""
-Maps characters to parents if the parents are not gods
-"""
-characters_to_parents = db.Table('characters_to_parents',
-                                 character_column(), character_column())
-
-"""
-Maps gods to their children
-"""
-gods_to_children = db.Table('gods_to_children',
-                            god_column(), character_column())
-
-"""
-Maps creatures to related characters
-"""
-creatures_to_characters = db.Table('creatures_to_characters',
-                                   creature_column(), character_column())
-
-"""
-Maps creatures to related myths
-"""
-creatures_to_myths = db.Table('creatures_to_myths',
-                              creature_column(), myth_column())
-
-"""
-Maps myths to main characters
-"""
-myths_to_characters = db.Table('myths_to_characters',
-                               myth_column(), character_column())
-
-"""
-Maps myths to related gods
-"""
-myths_to_gods = db.Table('myths_to_gods', myth_column(), god_column())
-
 
 class God(db.Model):
     """
