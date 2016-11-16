@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort
+from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort, request
 import os
 import json
 
@@ -77,6 +77,17 @@ def myths_model():
 	if os.path.exists(app.config['STATIC_MYTHS_LIST']):
 		return send_file(app.config['STATIC_MYTHS_LIST'])
 	return error_wrapper('Myths Model page to be added'), 404
+
+
+@app.route('/search')
+@app.route('/search/')
+def search_model():
+	q = request.args.get('query')
+	q = str(q)
+	search_result = []
+	search_result.append(q)
+	print(search_result)
+	return render_template('searchtemp.html', search = search_result)
 
 #using string instead of path because we don't want '/' to count
 # @app.route('/gods/<string:god>')
