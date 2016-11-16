@@ -93,13 +93,15 @@ class Myth(db.Model):
     name = db.Column(db.String, primary_key=True)
     description = db.Column(db.String)
     gods = db.Column(db.String, db.ForeignKey('god.name'))
-    non_gods = db.Column(db.String, db.ForeignKey('hero.name'))
+    heroes = db.Column(db.String, db.ForeignKey('hero.name'))
+    other_characters = db.Column(db.String)
     place = db.Column(db.String)
     theme = db.Column(db.String)
 
-    def __init__(self, name, description, place, theme):
+    def __init__(self, name, description, other_characters, place, theme):
         self.name = name
         self.description = description
+        self.other_characters = other_characters
         self.place = place
         self.theme = theme
 
