@@ -44,6 +44,14 @@ function Application() {
                         <a href="/static/about.html" style={{color: bgColors.Yellow}}>About</a>
                     </li>
                 </ul>
+
+                <form className="navbar-form navbar-left" role="search" action="/search" method="get">
+                  <div className="form-group">
+                    <input name="query" id="searchval" type="text" className="form-control" placeholder="Search"></input>
+                  </div>
+                  <button type="submit" className="btn btn-default">Submit</button>
+                </form>
+                
             </div>
         </div>
     </nav>
