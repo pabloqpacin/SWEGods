@@ -1,4 +1,4 @@
-console.log(GodsList);
+console.log(LocationsList);
 
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
@@ -11,24 +11,23 @@ var bgColors = { "Default": "#81b71a",
                     "Yellow": "#F6BB42",
 };
 
-var godsinfo = [];
-for (var i = 0; i < GodsList.length; i++) {
-    var god = {
-      'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + GodsList[i].name + '</a>'),
-      'Roman Name': unsafe(GodsList[i].romanname),
-      'Symbol': unsafe(GodsList[i].symbol),
-      'Power': unsafe(GodsList[i].power),
-      'Father': unsafe(GodsList[i].father),
-      'Mother': unsafe(GodsList[i].mother)
+var locationsinfo = [];
+for (var i = 0; i < LocationsList.length; i++) {
+    var location = {
+      'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
+      'Alternate Name': unsafe(LocationsList[i].altname),
+      'Type': unsafe(LocationsList[i].location_type),
+      'Myth': unsafe(LocationsList[i].myth),
+      'Characters': unsafe(LocationsList[i].gods)
     };
-    godsinfo.push(god);
+    locationsinfo.push(location);
 }
 
 ReactDOM.render(
   <div>
     <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-    data={godsinfo}
+    data={locationsinfo}
 
     sortable={[
       {
@@ -41,16 +40,15 @@ ReactDOM.render(
               return nameA.localeCompare(nameB);
           }
       },
-      'Roman Name',
-      'Symbol',
-      'Power',
-      'Father',
-      'Mother'
+      'Alternate Name',
+      'Type',
+      'Myth',
+      'Characters'
     ]}
 
-    filterable={['Name', 'Roman Name', 'Symbol', 'Power', 'Father', 'Mother']}
+    filterable={['Name', 'Alternate Name', 'Type', 'Myth', 'Characters']}
 
     defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={8} pageButtonLimit={100}/>
   </div>,
-    document.getElementById('gods')
+    document.getElementById('locations')
 );

@@ -1,51 +1,56 @@
-var myths = [{
-      id: 1,
-      myth: "Flight of Daedalus and Icarus",
-      main_characters: "Icarus, Daedalus, Minotaur",
-      related_gods: "N/A",
-      summary: "Flight of Daedalys and Icarus",
-      location: "Crete",
-      impact: "A man who does not recognise his own limitations"
-  },{
-    id: 2,
-    myth: "Myth of Perseus",
-    main_characters: "Perseus, Polydectes",
-    related_gods: "Hermes, Athenea",
-    summary: "Myth of Perseus",
-    location: "Argos",
-    impact: "Nature of fate and prophecies"
-  },{
-    id: 3,
-    myth: "Orpheus and Eurydice",
-    main_characters: "Orpheus",
-    related_gods: "Dionysus, Hades",
-    summary: "Myth of Orpheus and Eurydice",
-    location: "N/A",
-    impact: "Romantic love is a dangerous thing"
-  }];
+console.log(MythsList);
 
-  function onRowSelect(row, isSelected){
-    window.location.href = '/myths/' + row.myth.toLowerCase().replace(/ /gi,'');;
-  }
+var Table = Reactable.Table,
+    unsafe = Reactable.unsafe;
 
-  var selectRowProp = {
-    mode: "radio",
-    clickToSelect: true,
-    bgColor: "rgb(238, 193, 213)",
-    onSelect: onRowSelect
-  };
+var bgColors = { "Default": "#81b71a",
+                    "Blue": "#00B1E1",
+                    "Cyan": "#37BC9B",
+                    "Green": "#8CC152",
+                    "Red": "#E9573F",
+                    "Yellow": "#F6BB42",
+};
 
-  ReactDOM.render(
-    <div style={{marginTop: 50 + 'px'}}>
-      <BootstrapTable data={myths} striped={true} hover={true} pagination={true} selectRow={selectRowProp}>
-          <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="myth" dataSort={true}>Myth</TableHeaderColumn>
-          <TableHeaderColumn dataField="main_characters" dataSort={true}>Main Charactres</TableHeaderColumn>
-          <TableHeaderColumn dataField="related_gods" dataSort={true}>Related Gods</TableHeaderColumn>
-          <TableHeaderColumn dataField="summary" dataSort={true}>Summary</TableHeaderColumn>
-          <TableHeaderColumn dataField="location" dataSort={true}>Location</TableHeaderColumn>
-          <TableHeaderColumn dataField="impact" dataSort={true}>Impact on Greek Life</TableHeaderColumn>
-      </BootstrapTable>
-    </div>,
-      document.getElementById("myths")
-  );
+var mythsinfo = [];
+for (var i = 0; i < MythsList.length; i++) {
+    var myth = {
+      'Name': unsafe('<a href="/myths/' + MythsList[i].name.toLowerCase() + '">' + MythsList[i].name + '</a>'),
+      'Description': unsafe(MythsList[i].description),
+      'Theme': unsafe(MythsList[i].theme),
+      'Place': unsafe(MythsList[i].place),
+      'Gods': unsafe(MythsList[i].gods),
+      'Characters': unsafe(MythsList[i].characters)
+    };
+    mythsinfo.push(myth);
+}
+
+ReactDOM.render(
+  <div>
+    <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
+
+    data={mythsinfo}
+
+    sortable={[
+      {
+          column: 'Name',
+          sortFunction: function(a, b){
+              // Sort by last name
+              var nameA = a
+              var nameB = b
+
+              return nameA.localeCompare(nameB);
+          }
+      },
+      'Description',
+      'Theme',
+      'Place',
+      'Gods',
+      'Characters'
+    ]}
+
+    filterable={['Name', 'Description', 'Theme', 'Place', 'Gods', 'Characters']}
+
+    defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={3} pageButtonLimit={100}/>
+  </div>,
+    document.getElementById('myths')
+);
