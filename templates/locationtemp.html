@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ }}</title>
+    <title>{{ location[0] }}</title>
 
     <!-- Latest compiled and minified CSS -->
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -74,30 +74,30 @@
           <div class="list-group listy">
             <a class="list-group-item list-group-item-action listy">
               <h5 class="list-group-item-heading">Name</h5>
-              <p class="list-group-item-text">{{ }}</p>
+              <p class="list-group-item-text">{{ location[0] }}</p>
             </a>
             <a href="#" class="list-group-item list-group-item-action listy">
               <h5 class="list-group-item-heading">Alternate Name</h5>
-              <p class="list-group-item-text">{{ }}</p>
+              <p class="list-group-item-text">{{ location[1] }}</p>
             </a>
             <a href="#" class="list-group-item list-group-item-action listy">
               <h5 class="list-group-item-heading">Type</h5>
-              <p class="list-group-item-text">{{ }}</p>
+              <p class="list-group-item-text">{{ location[2] }}</p>
             </a>
             <a href="#" class="list-group-item list-group-item-action listy">
               <h5 class="list-group-item-heading">Myth</h5>
-              <p class="list-group-item-text">{{ }}</p>
+              <p class="list-group-item-text">{{ location[3] }}</p>
             </a>
             <a href="#" class="list-group-item list-group-item-action listy">
               <h5 class="list-group-item-heading">Characters</h5>
-              <p class="list-group-item-text">{{ }}</p>
+              <p class="list-group-item-text">{{ location[4] }}</p>
             </a>
           </div>
 
         </div>
         <div class="col-sm-4">
-          <h2>{{ }}</h2>
-          <img style="border:10px solid black"; class="img-responsive" src="http://img01.deviantart.net/067d/i/2016/010/d/a/rick_and_morty_by_choppywings-d77gu11.png">
+          <h2>{{ location[0] }}</h2>
+          <img style="border:10px solid black"; class="img-responsive" src="{{ location[5] }}">
         </div>
       </div>
       <!-- <div class="row">

@@ -4,7 +4,6 @@ var LocationsList = [{"name":"Arcadia","altname":"Arcadia","myth":"None","locati
 {"name":"Thebes","altname":"Thebes","myth":"The story of Laius","location_type":"City","gods":"Heracles"},
 {"name":"Caria","altname":"Mount Latmus","myth":"None","location_type":"Mountain","gods":"Endymion"},
 {"name":"Laconia","altname":"Lacedaemonia","myth":"None","location_type":"Island","gods":"Hyacinthus"},
-{"name":"Troy","altname":"Ilion, Troia, Ilium","myth":"Trojan War","location_type":"City","gods":"Achilles, Odysseus"},
 {"name":"Argolis","altname":"Argolid","myth":"None","location_type":"Peninsula","gods":"Io, Perseus"},
 {"name":"Thessaly","altname":"Aeolia","myth":"Golden Fleece","location_type":"Plain","gods":"Pandora, Odysseus, Pyrrha, Achilles"},
 {"name":"Pisa in Elis","altname":"Eleia","myth":"Trojan War","location_type":"Valley","gods":"Pelops"},
