@@ -102,6 +102,7 @@ def god_page(god):
 			god_info.append(i['power'])
 			god_info.append(i['father'])
 			god_info.append(i['mother'])
+			god_info.append(i['url'])
 	return render_template('godtemp.html', god = god_info)
 
 # Links to specific hero given by hero name
@@ -128,6 +129,7 @@ def hero_page(hero):
 			hero_info.append(i['home'])
 			hero_info.append(i['father'])
 			hero_info.append(i['mother'])
+			hero_info.append(i['url'])
 	return render_template('herotemp.html', hero = hero_info)
 
 # Links to specific creature given by creature name
@@ -153,6 +155,7 @@ def location_page(location):
 			location_info.append(i['location_type'])
 			location_info.append(i['myth'])
 			location_info.append(i['gods'])
+			location_info.append(i['url'])
 	return render_template('locationtemp.html', location = location_info)
 
 # Links to specific myth given by myth name
@@ -179,6 +182,7 @@ def myth_page(myth):
 			myth_info.append(i['place'])
 			myth_info.append(i['gods'])
 			myth_info.append(i['characters'])
+			myth_info.append(i['url'])
 	return render_template('mythtemp.html', myth = myth_info)
 
 @app.route('/static/<path:folder>/<string:file>')
