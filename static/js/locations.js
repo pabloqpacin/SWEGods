@@ -16,7 +16,7 @@ for (var i = 0; i < LocationsList.length; i++) {
     var location = {
       'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
       'Alternate Name': unsafe(LocationsList[i].altname),
-      'Type': unsafe(LocationsList[i].location_type),
+      'Type': unsafe(LocationsList[i].locationtype),
       'Myth': unsafe(LocationsList[i].myth),
       'Characters': unsafe(LocationsList[i].gods)
     };

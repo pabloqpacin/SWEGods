@@ -165,7 +165,7 @@ def hero_page(hero):
 	for i in data:
 		if i['name'].lower() == hero:
 			hero_info.append(i['name'])
-			hero_info.append(i['hero_type'])
+			hero_info.append(i['herotype'])
 			hero_info.append(i['power'])
 			hero_info.append(i['home'])
 			hero_info.append(i['father'])
@@ -193,7 +193,7 @@ def location_page(location):
 		if i['name'].lower() == location:
 			location_info.append(i['name'])
 			location_info.append(i['altname'])
-			location_info.append(i['location_type'])
+			location_info.append(i['locationtype'])
 			location_info.append(i['myth'])
 			location_info.append(i['gods'])
 			location_info.append(i['url'])
@@ -222,7 +222,7 @@ def myth_page(myth):
 			myth_info.append(i['theme'])
 			myth_info.append(i['place'])
 			myth_info.append(i['gods'])
-			myth_info.append(i['characters'])
+			myth_info.append(i['nongods'])
 			myth_info.append(i['url'])
 	return render_template('mythtemp.html', myth = myth_info)
 
