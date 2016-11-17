@@ -30,6 +30,25 @@ class GodsHandler(flask_restful.Resource):
 
 api.add_resource(GodsHandler, '/api/gods/') 
 
+class GodHandler(flask_restful.Resource):
+  def get(self, god_name):
+    god = God.query.filter_by(name=god_name)
+    god = god.first()
+    god_response = {}
+
+    if god:
+      god_response = {
+        'name': god.name,
+        'romanname': god.romanname,
+        'power': god.power,
+        'symbol': god.symbol,
+        'father': god.father,
+        'mother': god.mother,
+      }
+    
+    return jsonify(god_response)
+api.add_resource(GodHandler, '/api/gods/<string:god_name>') 
+
 class HeroesHandler(flask_restful.Resource):
   def get(self):
     heroes = Hero.query.all()
@@ -49,6 +68,25 @@ class HeroesHandler(flask_restful.Resource):
     return jsonify(heroes_response)
 
 api.add_resource(HeroesHandler, '/api/heroes/') 
+
+class HeroHandler(flask_restful.Resource):
+  def get(self, hero_name):
+    hero = Hero.query.filter_by(name=hero_name)
+    hero = hero.first()
+    hero_response = {}
+
+    if hero:
+      hero_response = {
+        'name': hero.name,
+        'herotype': hero.herotype,
+        'power': hero.power,
+        'father': hero.father,
+        'mother': hero.mother,
+        'home': hero.home,
+      }
+    
+    return jsonify(hero_response)
+api.add_resource(HeroHandler, '/api/heroes/<string:hero_name>') 
 
 class MythsHandler(flask_restful.Resource):
   def get(self):
@@ -70,6 +108,25 @@ class MythsHandler(flask_restful.Resource):
 
 api.add_resource(MythsHandler, '/api/myths/') 
 
+class MythHandler(flask_restful.Resource):
+  def get(self, myth_name):
+    myth = Myth.query.filter_by(name=myth_name)
+    myth = myth.first()
+    myth_response = {}
+
+    if myth:
+      myth_response = {
+        'name': myth.name,
+        'description': myth.description,
+        'gods': myth.gods,
+        'non-gods': myth.nongods,
+        'place': myth.place,
+        'theme': myth.theme,
+      }
+    
+    return jsonify(myth_response)
+api.add_resource(MythHandler, '/api/myths/<string:myth_name>') 
+
 class LocationsHandler(flask_restful.Resource):
   def get(self):
     locations = Location.query.all()
@@ -88,6 +145,24 @@ class LocationsHandler(flask_restful.Resource):
     return jsonify(locations_response)
 
 api.add_resource(LocationsHandler, '/api/locations/') 
+
+class LocationHandler(flask_restful.Resource):
+  def get(self, location_name):
+    location = Location.query.filter_by(name=location_name)
+    location = location.first()
+    location_response = {}
+
+    if location:
+      location_response = {
+        'name': location.name,
+        'alternate_name': location.altname,
+        'myth': location.myth,
+        'type': location.locationtype,
+        'gods': location.gods,
+      }
+    
+    return jsonify(location_response)
+api.add_resource(LocationHandler, '/api/locations/<string:location_name>') 
 
 
 #Static pages
