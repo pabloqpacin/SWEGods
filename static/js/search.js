@@ -6,6 +6,7 @@
 // );
 
 console.log(GodsList);
+console.log(s.name);
 
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
@@ -20,15 +21,18 @@ var bgColors = { "Default": "#81b71a",
 
 var godsinfoand = [];
 for (var i = 0; i < GodsList.length; i++) {
-    var god = {
-      'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + GodsList[i].name + '</a>'),
-      'Roman Name': unsafe(GodsList[i].romanname),
-      'Symbol': unsafe(GodsList[i].symbol),
-      'Power': unsafe(GodsList[i].power),
-      'Father': unsafe(GodsList[i].father),
-      'Mother': unsafe(GodsList[i].mother)
-    };
-    godsinfoand.push(god);
+    if (GodsList[i].name.toLowerCase().indexOf(s.name.toLowerCase()) !== -1) {
+      var select = '<b>' + GodsList[i].name.toLowerCase() + '</b>';
+      var god = {
+        'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + select + '</a>'),
+        'Roman Name': unsafe(GodsList[i].romanname),
+        'Symbol': unsafe(GodsList[i].symbol),
+        'Power': unsafe(GodsList[i].power),
+        'Father': unsafe(GodsList[i].father),
+        'Mother': unsafe(GodsList[i].mother)
+      };
+      godsinfoand.push(god);
+    }
 }
 
 var heroesinfoand = [];
