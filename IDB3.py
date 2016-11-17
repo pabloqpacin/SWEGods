@@ -125,14 +125,30 @@ def search_model():
     if q != '':
         tablename = 'gods'
         columns = db.engine.execute('Select * from ' + tablename).keys()
-        andQuery, orQuery = generateQuery(q, tablename, columns)
+        godsAndQuery, godsOrQuery = generateQuery(q, tablename, columns)
         
-        result = db.engine.execute(andQuery)
+        tablename = 'heroes'
+        columns = db.engine.execute('Select * from ' + tablename).keys()
+        heroesAndQuery, heroesOrQuery = generateQuery(q, tablename, columns)
         
-        print('ResultSet from SQLAlchemy')
-        print(result)
+        tablename = 'myths'
+        columns = db.engine.execute('Select * from ' + tablename).keys()
+        mythsAndQuery, mythsOrQuery = generateQuery(q, tablename, columns)
         
-        for row in result:
+        tablename = 'locations'
+        columns = db.engine.execute('Select * from ' + tablename).keys()
+        locationsAndQuery, locationsOrQuery = generateQuery(q, tablename, columns)
+        
+        godsAndResult = db.engine.execute(godsAndQuery)
+        godsOrResult = db.engine.execute(godsOrQuery)
+        heroesAndResult = db.engine.execute(heroesAndQuery)
+        heroesOrResult = db.engine.execute(heroesOrQuery)
+        mythsAndResult = db.engine.execute(mythsAndQuery)
+        mythsOrResult = db.engine.execute(mythsOrQuery)
+        locationsAndResult = db.engine.execute(locationsAndQuery)
+        locationsOrResult = db.engine.execute(locationsOrQuery)
+        
+        for row in godsAndResult:
             print(row)
             for col in row:
                 print(boldSearchTerms(q,col))
