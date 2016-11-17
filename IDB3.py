@@ -1,93 +1,206 @@
 from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort, request, jsonify
-from app.models import db, God, Hero, Location, Myth
 import re
 import os
 import json
-from app.models import *
 import flask_restful
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@greekmythology.me:5432/greekmyths'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
-# api = flask_restful.Api(app)
 
-# class GodsHandler(flask_restful.Resource):
-#   def get(self):
-#     gods = God.query.all()
+class God(db.Model):
+    """
+    Information about a god in Greek mythology.
+    """
+
+    __tablename__ = 'gods'
+
+    name = db.Column(db.String, primary_key=True)
+    power = db.Column(db.String)
+    romanname = db.Column(db.String)
+    power = db.Column(db.String)
+    symbol = db.Column(db.String)
+    father = db.Column(db.String)
+    mother = db.Column(db.String)
+    # fathergod = db.Column(db.String, db.ForeignKey('god.name'))
+    # fatherhero = db.Column(db.String, db.ForeignKey('hero.name'))
+    # mothergod = db.Column(db.String, db.ForeignKey('god.name'))
+    # motherhero = db.Column(db.String, db.ForeignKey('hero.name'))
+
+    def __init__(self, name, romanname, power, symbol, father, mother):
+        self.name = name
+        self.power = power
+        self.romanname = romanname
+        self.power = power
+        self.symbol = symbol
+        self.father = father
+        self.mother = mother
+
+    def __repr__(self):
+        return '<God %r>' % self.name
+
+
+class Hero(db.Model):
+    """
+    Information about a hero in Greek mythology.
+    """
+
+    __tablename__ = 'heroes'
+
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    herotype = db.Column(db.String, nullable=False)
+    father = db.Column(db.String, nullable=False)
+    mother = db.Column(db.String, nullable=False)
+    # father_god = db.Column(db.String, db.ForeignKey('god.name'))
+    # father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
+    # mother_god = db.Column(db.String, db.ForeignKey('god.name'))
+    # mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))  
+    power = db.Column(db.String, nullable=False)
+    home = db.Column(db.String, nullable=False)
+
+    def __init__(self, name, herotype, father, mother, power, home):
+        self.name = name
+        self.herotype = herotype
+        self.father = father
+        self.mother = mother
+        self.power = power
+        self.home = home
+
+    def __repr__(self):
+        return '<Hero %r>' % self.name
+
+
+class Location(db.Model):
+    """
+    Information about a location from Greek mythology.
+    """
+
+    __tablename__ = 'locations'
+
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    altname = db.Column(db.String, nullable=False)
+    myth = db.Column(db.String, db.ForeignKey('myth.name'), nullable=False)
+    locationtype = db.Column(db.String, nullable=False)
+    gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+
+    def __init__(self, name, altname, myth, locationtype, gods):
+        self.name = name
+        self.altname = altname
+        self.myth = myth
+        self.locationtype = locationtype
+        self.gods = gods
+
+    def __repr__(self):
+        return '<Location %r>' % self.name
+
+class Myth(db.Model):
+    """
+    Information about a myth from Greek mythology.
+    """
+
+    __tablename__ = 'myths'
+
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    nongods = db.Column(db.String, nullable=False)
+    place = db.Column(db.String, nullable=False)
+    theme = db.Column(db.String, nullable=False)
+
+    def __init__(self, name, description, gods, nongods, place, theme):
+        self.name = name
+        self.description = description
+        self.gods = gods
+        self.nongods = nongods
+        self.place = place
+        self.theme = theme
+
+    def __repr__(self):
+        return '<Myth %r>' % self.name
+
+api = flask_restful.Api(app)
+
+class GodsHandler(flask_restful.Resource):
+  def get(self):
+    gods = God.query.all()
     
-#     gods_response = {}
-#     for god in gods:
-#       god_data = {
-#         'name': god.name,
-#         'romanname': god.romanname,
-#         'power': god.power,
-#         'symbol': god.symbol,
-#         'father': god.father,
-#         'mother': god.mother,
-#       }
-#       gods_response[god.name] = god_data
+    gods_response = {}
+    for god in gods:
+      god_data = {
+        'name': god.name,
+        'romanname': god.romanname,
+        'power': god.power,
+        'symbol': god.symbol,
+        'father': god.father,
+        'mother': god.mother,
+      }
+      gods_response[god.name] = god_data
 
-#     return jsonify(gods_response)
+    return jsonify(gods_response)
 
-# api.add_resource(GodsHandler, '/api/gods/') 
+api.add_resource(GodsHandler, '/api/gods/') 
 
-# class HeroesHandler(flask_restful.Resource):
-#   def get(self):
-#     heroes = Hero.query.all()
+class HeroesHandler(flask_restful.Resource):
+  def get(self):
+    heroes = Hero.query.all()
     
-#     heroes_response = {}
-#     for hero in heroes:
-#       hero_data = {
-#         'name': hero.name,
-#         'herotype': hero.herotype,
-#         'power': hero.power,
-#         'father': hero.father,
-#         'mother': hero.mother,
-#         'home': hero.home,
-#       }
-#       heroes_response[hero.name] = hero_data
+    heroes_response = {}
+    for hero in heroes:
+      hero_data = {
+        'name': hero.name,
+        'herotype': hero.herotype,
+        'power': hero.power,
+        'father': hero.father,
+        'mother': hero.mother,
+        'home': hero.home,
+      }
+      heroes_response[hero.name] = hero_data
 
-#     return jsonify(heroes_response)
+    return jsonify(heroes_response)
 
-# api.add_resource(HeroesHandler, '/api/heroes/') 
+api.add_resource(HeroesHandler, '/api/heroes/') 
 
-# class MythsHandler(flask_restful.Resource):
-#   def get(self):
-#     myths = Myth.query.all()
+class MythsHandler(flask_restful.Resource):
+  def get(self):
+    myths = Myth.query.all()
     
-#     myths_response = {}
-#     for myth in myths:
-#       myth_data = {
-#         'name': myth.name,
-#         'description': myth.description,
-#         'gods': myth.gods,
-#         'non-gods': myth.nongods,
-#         'place': myth.place,
-#         'theme': myth.theme,
-#       }
-#       myths_response[myth.name] = myth_data
+    myths_response = {}
+    for myth in myths:
+      myth_data = {
+        'name': myth.name,
+        'description': myth.description,
+        'gods': myth.gods,
+        'non-gods': myth.nongods,
+        'place': myth.place,
+        'theme': myth.theme,
+      }
+      myths_response[myth.name] = myth_data
 
-#     return jsonify(myths_response)
+    return jsonify(myths_response)
 
-# api.add_resource(MythsHandler, '/api/myths/') 
+api.add_resource(MythsHandler, '/api/myths/') 
 
-# class LocationsHandler(flask_restful.Resource):
-#   def get(self):
-#     locations = Location.query.all()
+class LocationsHandler(flask_restful.Resource):
+  def get(self):
+    locations = Location.query.all()
     
-#     locations_response = {}
-#     for location in locations:
-#       location_data = {
-#         'name': location.name,
-#         'alternate_name': location.altname,
-#         'myth': location.myth,
-#         'type': location.locationtype,
-#         'gods': location.gods,
-#       }
-#       locations_response[location.name] = location_data
+    locations_response = {}
+    for location in locations:
+      location_data = {
+        'name': location.name,
+        'alternate_name': location.altname,
+        'myth': location.myth,
+        'type': location.locationtype,
+        'gods': location.gods,
+      }
+      locations_response[location.name] = location_data
 
-#     return jsonify(locations_response)
+    return jsonify(locations_response)
 
-# api.add_resource(LocationsHandler, '/api/locations/') 
+api.add_resource(LocationsHandler, '/api/locations/') 
 
 
 #Static pages
