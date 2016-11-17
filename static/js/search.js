@@ -34,11 +34,11 @@ console.log('REPLACE');
 console.log(locationandrep);
 var locationandobject = JSON.parse(locationandrep);
 
-var mythandrep = mythand.name.replace(/'{/g, "{");
-mythandrep = mythandrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(mythandrep);
-var mythandobject = JSON.parse(mythandrep);
+// var mythandrep = mythand.name.replace(/'{/g, "{");
+// mythandrep = mythandrep.replace(/}'/g, "}");
+// console.log('REPLACE');
+// console.log(mythandrep);
+// var mythandobject = JSON.parse(mythandrep);
 
 var godorrep = godor.name.replace(/'{/g, "{");
 godorrep = godorrep.replace(/}'/g, "}");
@@ -58,11 +58,11 @@ console.log('REPLACE');
 console.log(locationorrep);
 var locationorobject = JSON.parse(locationorrep);
 
-var mythorrep = mythor.name.replace(/'{/g, "{");
-mythorrep = mythorrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(mythorrep);
-var mythorobject = JSON.parse(mythorrep);
+// var mythorrep = mythor.name.replace(/'{/g, "{");
+// mythorrep = mythorrep.replace(/}'/g, "}");
+// console.log('REPLACE');
+// console.log(mythorrep);
+// var mythorobject = JSON.parse(mythorrep);
 
 console.log('GOD AND OBJ');
 console.log(godandobject);
