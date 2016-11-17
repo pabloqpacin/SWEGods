@@ -15,7 +15,7 @@ var heroesinfo = [];
 for (var i = 0; i < HeroesList.length; i++) {
     var hero = {
       'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
-      'Type': unsafe(HeroesList[i].hero_type),
+      'Type': unsafe(HeroesList[i].herotype),
       'Power': unsafe(HeroesList[i].power),
       'Home': unsafe(HeroesList[i].home),
       'Father': unsafe(HeroesList[i].father),

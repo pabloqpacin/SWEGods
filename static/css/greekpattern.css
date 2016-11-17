@@ -48,6 +48,10 @@
 #myths {
   padding-bottom: 100px;
 }
+
+#search {
+  padding-bottom: 100px;
+}
 /*}
 hr:nth-child(1) {
   background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/wave.svg);
