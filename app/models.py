@@ -31,7 +31,6 @@ class God(db.Model):
     __tablename__ = 'gods'
 
     name = db.Column(db.String, primary_key=True)
-    power = db.Column(db.String)
     romanname = db.Column(db.String)
     power = db.Column(db.String)
     symbol = db.Column(db.String)
@@ -44,7 +43,6 @@ class God(db.Model):
 
     def __init__(self, name, romanname, power, symbol, father, mother):
         self.name = name
-        self.power = power
         self.romanname = romanname
         self.power = power
         self.symbol = symbol

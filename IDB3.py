@@ -57,9 +57,9 @@ class GodHandler(flask_restful.Resource):
         'father': god.father,
         'mother': god.mother,
       }
-    
+
     return jsonify(god_response)
-api.add_resource(GodHandler, '/api/gods/<string:god_name>') 
+api.add_resource(GodHandler, '/api/gods/<string:god_name>')
 
 class HeroesHandler(flask_restful.Resource):
   def get(self):
@@ -96,9 +96,9 @@ class HeroHandler(flask_restful.Resource):
         'mother': hero.mother,
         'home': hero.home,
       }
-    
+
     return jsonify(hero_response)
-api.add_resource(HeroHandler, '/api/heroes/<string:hero_name>') 
+api.add_resource(HeroHandler, '/api/heroes/<string:hero_name>')
 
 class MythsHandler(flask_restful.Resource):
   def get(self):
@@ -135,9 +135,9 @@ class MythHandler(flask_restful.Resource):
         'place': myth.place,
         'theme': myth.theme,
       }
-    
+
     return jsonify(myth_response)
-api.add_resource(MythHandler, '/api/myths/<string:myth_name>') 
+api.add_resource(MythHandler, '/api/myths/<string:myth_name>')
 
 class LocationsHandler(flask_restful.Resource):
   def get(self):
@@ -172,9 +172,9 @@ class LocationHandler(flask_restful.Resource):
         'type': location.locationtype,
         'gods': location.gods,
       }
-    
+
     return jsonify(location_response)
-api.add_resource(LocationHandler, '/api/locations/<string:location_name>') 
+api.add_resource(LocationHandler, '/api/locations/<string:location_name>')
 
 
 #Static pages
@@ -327,6 +327,87 @@ def search_model():
     search_result.append(q)
     print(search_result)
     return render_template('searchtemp.html', search = search_result)
+
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["romanname"] = boldSearchTerms(q,row["romanname"])
+            obi["symbol"] = boldSearchTerms(q,row["symbol"])
+            obi["power"] = boldSearchTerms(q,row["power"])
+            obi["father"] = boldSearchTerms(q,row["father"])
+            obi["mother"] = boldSearchTerms(q,row["mother"])
+            god_and_result.append(json.dumps(obi))
+
+        for row in heroesAndResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["herotype"] = boldSearchTerms(q,row["herotype"])
+            obi["power"] = boldSearchTerms(q,row["power"])
+            obi["home"] = boldSearchTerms(q,row["home"])
+            obi["father"] = boldSearchTerms(q,row["father"])
+            obi["mother"] = boldSearchTerms(q,row["mother"])
+            hero_and_result.append(json.dumps(obi))
+
+        for row in locationsAndResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["altname"] = boldSearchTerms(q,row["altname"])
+            obi["locationtype"] = boldSearchTerms(q,row["locationtype"])
+            obi["myth"] = boldSearchTerms(q,row["myth"])
+            obi["gods"] = boldSearchTerms(q,row["gods"])
+            location_and_result.append(json.dumps(obi))
+
+        for row in mythsAndResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["description"] = boldSearchTerms(q,row["description"])
+            obi["theme"] = boldSearchTerms(q,row["theme"])
+            obi["place"] = boldSearchTerms(q,row["place"])
+            obi["gods"] = boldSearchTerms(q,row["gods"])
+            obi["nongods"] = boldSearchTerms(q,row["nongods"])
+            myth_and_result.append(json.dumps(obi))
+
+        for row in godsOrResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["romanname"] = boldSearchTerms(q,row["romanname"])
+            obi["symbol"] = boldSearchTerms(q,row["symbol"])
+            obi["power"] = boldSearchTerms(q,row["power"])
+            obi["father"] = boldSearchTerms(q,row["father"])
+            obi["mother"] = boldSearchTerms(q,row["mother"])
+            god_or_result.append(json.dumps(obi))
+
+        for row in heroesOrResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["herotype"] = boldSearchTerms(q,row["herotype"])
+            obi["power"] = boldSearchTerms(q,row["power"])
+            obi["home"] = boldSearchTerms(q,row["home"])
+            obi["father"] = boldSearchTerms(q,row["father"])
+            obi["mother"] = boldSearchTerms(q,row["mother"])
+            hero_or_result.append(json.dumps(obi))
+
+        for row in locationsOrResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["altname"] = boldSearchTerms(q,row["altname"])
+            obi["locationtype"] = boldSearchTerms(q,row["locationtype"])
+            obi["myth"] = boldSearchTerms(q,row["myth"])
+            obi["gods"] = boldSearchTerms(q,row["gods"])
+            location_or_result.append(json.dumps(obi))
+
+        for row in mythsOrResult:
+            obi = {}
+            obi["name"] = boldSearchTerms(q,row["name"])
+            obi["description"] = boldSearchTerms(q,row["description"])
+            obi["theme"] = boldSearchTerms(q,row["theme"])
+            obi["place"] = boldSearchTerms(q,row["place"])
+            obi["gods"] = boldSearchTerms(q,row["gods"])
+            obi["nongods"] = boldSearchTerms(q,row["nongods"])
+            myth_or_result.append(json.dumps(obi))
+            print(obi)
+
+    # print(god_and_result)
+    return render_template('searchtemp.html', godand = god_and_result, heroand = hero_and_result, locationand = location_and_result, mythand = myth_and_result, godor = god_or_result, heroor = hero_or_result, locationor = location_or_result, mythor = myth_or_result)
 
 #using string instead of path because we don't want '/' to count
 # @app.route('/gods/<string:god>')
