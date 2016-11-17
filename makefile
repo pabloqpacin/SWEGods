@@ -1,9 +1,9 @@
 FILES :=                            \
     IDB3.py                     	\
+    tests.py					    \
     static/                     	\
     templates/                    	\
     app/models.py					\
-    app/tests.py					\
     # app/tests.out					\
  	# IDB3.html						\
  	# IDB3.log						\
