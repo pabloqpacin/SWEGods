@@ -183,6 +183,118 @@ ReactDOM.render(
 
       defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={3} pageButtonLimit={100}/>
     </div>
+    <h3>OR RESULTS</h3>
+    <h4>Gods</h4>
+    <div>
+      <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
+
+      data={godsinfo}
+
+      sortable={[
+        {
+            column: 'Name',
+            sortFunction: function(a, b){
+                // Sort by last name
+                var nameA = a
+                var nameB = b
+
+                return nameA.localeCompare(nameB);
+            }
+        },
+        'Roman Name',
+        'Symbol',
+        'Power',
+        'Father',
+        'Mother'
+      ]}
+
+      filterable={['Name', 'Roman Name', 'Symbol', 'Power', 'Father', 'Mother']}
+
+      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={5} pageButtonLimit={100}/>
+    </div>
+    <h4>Heroes</h4>
+    <div>
+      <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
+
+      data={heroesinfo}
+
+      sortable={[
+        {
+            column: 'Name',
+            sortFunction: function(a, b){
+                // Sort by last name
+                var nameA = a
+                var nameB = b
+
+                return nameA.localeCompare(nameB);
+            }
+        },
+        'Type',
+        'Power',
+        'Home',
+        'Father',
+        'Mother'
+      ]}
+
+      filterable={['Name', 'Type', 'Power', 'Home', 'Father', 'Mother']}
+
+      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={8} pageButtonLimit={100}/>
+    </div>
+    <h4>Locations</h4>
+    <div>
+      <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
+
+      data={locationsinfo}
+
+      sortable={[
+        {
+            column: 'Name',
+            sortFunction: function(a, b){
+                // Sort by last name
+                var nameA = a
+                var nameB = b
+
+                return nameA.localeCompare(nameB);
+            }
+        },
+        'Alternate Name',
+        'Type',
+        'Myth',
+        'Characters'
+      ]}
+
+      filterable={['Name', 'Alternate Name', 'Type', 'Myth', 'Characters']}
+
+      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={8} pageButtonLimit={100}/>
+    </div>
+    <h4>Myths</h4>
+    <div>
+      <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
+
+      data={mythsinfo}
+
+      sortable={[
+        {
+            column: 'Name',
+            sortFunction: function(a, b){
+                // Sort by last name
+                var nameA = a
+                var nameB = b
+
+                return nameA.localeCompare(nameB);
+            }
+        },
+        'Description',
+        'Theme',
+        'Place',
+        'Gods',
+        'Characters'
+      ]}
+
+      filterable={['Name', 'Description', 'Theme', 'Place', 'Gods', 'Characters']}
+
+      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={3} pageButtonLimit={100}/>
+    </div>
   </div>,
     document.getElementById('search')
 );
