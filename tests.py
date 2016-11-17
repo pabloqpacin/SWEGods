@@ -99,7 +99,7 @@ class tests(unittest.TestCase) :
         self.assertEqual(self.app.get('/myths/troys').status, '301 MOVED PERMANENTLY')
 
     def test_index_26(self):
-        self.assertEqual(self.app.get('/search/').status, '200 OK')
+        self.assertEqual(self.app.get('/search/zeus').status, '404 NOT FOUND')
 
     def test_index_27(self):
         self.assertEqual(self.app.get('/search/gods').status, '404 NOT FOUND')
