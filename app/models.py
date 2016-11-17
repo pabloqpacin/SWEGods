@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5421/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@greekmythology.me:5432/greekmyths'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -12,25 +12,28 @@ class God(db.Model):
     Information about a god in Greek mythology.
     """
 
-    __tablename__ = 'god'
+    __tablename__ = 'gods'
 
     name = db.Column(db.String, primary_key=True)
     power = db.Column(db.String)
-    roman_name = db.Column(db.String)
+    romanname = db.Column(db.String)
     power = db.Column(db.String)
     symbol = db.Column(db.String)
-    olympian = db.Column(db.Boolean)
-    father_god = db.Column(db.String, db.ForeignKey('god.name'))
-    father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
-    mother_god = db.Column(db.String, db.ForeignKey('god.name'))
-    mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))
+    father = db.Column(db.String)
+    mother = db.Column(db.String)
+    # fathergod = db.Column(db.String, db.ForeignKey('god.name'))
+    # fatherhero = db.Column(db.String, db.ForeignKey('hero.name'))
+    # mothergod = db.Column(db.String, db.ForeignKey('god.name'))
+    # motherhero = db.Column(db.String, db.ForeignKey('hero.name'))
 
-    def __init__(self, name, roman_name, power, symbol):
+    def __init__(self, name, romanname, power, symbol, father, mother):
         self.name = name
         self.power = power
-        self.roman_name = roman_name
+        self.romanname = romanname
         self.power = power
         self.symbol = symbol
+        self.father = father
+        self.mother = mother
 
     def __repr__(self):
         return '<God %r>' % self.name
@@ -41,20 +44,24 @@ class Hero(db.Model):
     Information about a hero in Greek mythology.
     """
 
-    __tablename__ = 'hero'
+    __tablename__ = 'heroes'
 
     name = db.Column(db.String, primary_key=True)
-    hero_type = db.Column(db.String)
-    father_god = db.Column(db.String, db.ForeignKey('god.name'))
-    father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
-    mother_god = db.Column(db.String, db.ForeignKey('god.name'))
-    mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))  
+    herotype = db.Column(db.String)
+    father = db.Column(db.String)
+    mother = db.Column(db.String)
+    # father_god = db.Column(db.String, db.ForeignKey('god.name'))
+    # father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
+    # mother_god = db.Column(db.String, db.ForeignKey('god.name'))
+    # mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))  
     power = db.Column(db.String)
     home = db.Column(db.String)
 
-    def __init__(self, name, hero_type, power, home):
+    def __init__(self, name, herotype, father, mother, power, home):
         self.name = name
-        self.hero_type = hero_type
+        self.herotype = herotype
+        self.father = father
+        self.mother = mother
         self.power = power
         self.home = home
 
@@ -72,7 +79,7 @@ class Location(db.Model):
     name = db.Column(db.String, primary_key=True)
     alt_name = db.Column(db.String)
     myth = db.Column(db.String, db.ForeignKey('myth.name'))
-    location_type = db.Column(db.String)
+    locationtype = db.Column(db.String)
     god = db.Column(db.String, db.ForeignKey('god.name'))
 
     def __init__(self, name, alt_name, location_type):
@@ -93,8 +100,7 @@ class Myth(db.Model):
     name = db.Column(db.String, primary_key=True)
     description = db.Column(db.String)
     gods = db.Column(db.String, db.ForeignKey('god.name'))
-    heroes = db.Column(db.String, db.ForeignKey('hero.name'))
-    other_characters = db.Column(db.String)
+    nongods = db.Column(db.String)
     place = db.Column(db.String)
     theme = db.Column(db.String)
 
@@ -107,3 +113,6 @@ class Myth(db.Model):
 
     def __repr__(self):
         return '<Myth %r>' % self.name
+
+print(God.query.all())
+print(Hero.query.all())
