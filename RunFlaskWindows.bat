@@ -1,1 +1,1 @@
-cmd /k "python IDB2.py & set FLASK_APP=IDB2.py & flask run"
+cmd /k "python IDB3.py & set FLASK_APP=IDB3.py & flask run"

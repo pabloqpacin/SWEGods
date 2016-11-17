@@ -1,4 +1,6 @@
 from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort, request
+from app.models import db, God, Hero, Location, Myth
+import re
 import os
 import json
 
@@ -55,6 +57,12 @@ def generateQuery(searchterm, tablename, columns):
                 orQ += 'SELECT * FROM ' + tablename +' WHERE to_tsvector(' + columnstring +') @@ to_tsquery(\'english\', \'' + term + '\')'
                     
         return (andQ, orQ)
+        
+def boldSearchTerms(searchterm, inputstring):
+    terms = searchterm.split()
+    for term in terms:
+        inputstring = re.sub(r'('+ term +')', r'<b>\1</b>', inputstring, flags=re.IGNORECASE)
+    return inputstring
 
 
 # Shows error message
@@ -112,12 +120,27 @@ def myths_model():
 @app.route('/search')
 @app.route('/search/')
 def search_model():
-	q = request.args.get('query')
-	q = str(q)
-	search_result = []
-	search_result.append(q)
-	print(search_result)
-	return render_template('searchtemp.html', search = search_result)
+    q = request.args.get('query')
+    q = str(q)
+    if q != '':
+        tablename = 'gods'
+        columns = db.engine.execute('Select * from ' + tablename).keys()
+        andQuery, orQuery = generateQuery(q, tablename, columns)
+        
+        result = db.engine.execute(andQuery)
+        
+        print('ResultSet from SQLAlchemy')
+        print(result)
+        
+        for row in result:
+            print(row)
+            for col in row:
+                print(boldSearchTerms(q,col))
+    
+    search_result = []
+    search_result.append(q)
+    print(search_result)
+    return render_template('searchtemp.html', search = search_result)
 
 #using string instead of path because we don't want '/' to count
 # @app.route('/gods/<string:god>')
