@@ -1,22 +1,22 @@
 FILES :=                            \
-    IDB2.py                     	\
+    IDB3.py                     	\
     static/                     	\
     templates/                    	\
     app/models.py					\
     app/tests.py					\
     # app/tests.out					\
- 	IDB2.html						\
- 	IDB2.log						\
- 	IDB2.pdf						\
+ 	# IDB3.html						\
+ 	# IDB3.log						\
+ 	# IDB3.pdf						\
  	.gitignore						\
  	.travis.yml						\
  	makefile						  
 
 IDB.log:
-	git log > IDB2.log
+	git log > IDB3.log
 
-IDB.html: IDB2.py
-	pydoc -w IDB2
+IDB.html: IDB3.py
+	pydoc -w IDB3
 
 check:
 	@not_found=0;                                 \
@@ -39,7 +39,7 @@ check:
 
 clean:
 	rm -f *.pyc
-	rm -f IDB2.log
-	rm -f IDB2.html
+	rm -f IDB3.log
+	rm -f IDB3.html
 
 test: IDB.html IDB.log check
