@@ -74,18 +74,20 @@ class Location(db.Model):
     Information about a location from Greek mythology.
     """
 
-    __tablename__ = 'location'
+    __tablename__ = 'locations'
 
     name = db.Column(db.String, primary_key=True)
-    alt_name = db.Column(db.String)
+    altname = db.Column(db.String)
     myth = db.Column(db.String, db.ForeignKey('myth.name'))
     locationtype = db.Column(db.String)
-    god = db.Column(db.String, db.ForeignKey('god.name'))
+    gods = db.Column(db.String, db.ForeignKey('god.name'))
 
-    def __init__(self, name, alt_name, location_type):
+    def __init__(self, name, altname, myth, locationtype, gods):
         self.name = name
-        self.alt_name = alt_name
-        self.location_type = location_type
+        self.altname = altname
+        self.myth = myth
+        self.locationtype = locationtype
+        self.gods = gods
 
     def __repr__(self):
         return '<Location %r>' % self.name
@@ -95,7 +97,7 @@ class Myth(db.Model):
     Information about a myth from Greek mythology.
     """
 
-    __tablename__ = 'myth'
+    __tablename__ = 'myths'
 
     name = db.Column(db.String, primary_key=True)
     description = db.Column(db.String)
@@ -104,15 +106,15 @@ class Myth(db.Model):
     place = db.Column(db.String)
     theme = db.Column(db.String)
 
-    def __init__(self, name, description, other_characters, place, theme):
+    def __init__(self, name, description, gods, nongods, place, theme):
         self.name = name
         self.description = description
-        self.other_characters = other_characters
+        self.gods = gods
+        self.nongods = nongods
         self.place = place
         self.theme = theme
 
     def __repr__(self):
         return '<Myth %r>' % self.name
 
-print(God.query.all())
 print(Hero.query.all())
