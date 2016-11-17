@@ -6,6 +6,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@greekmythology.me
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+class Url(db.Model):
+    """
+    Information about a god in Greek mythology.
+    """
+
+    __tablename__ = 'urls'
+
+    name = db.Column(db.String, primary_key=True)
+    url  = db.Column(db.String)
+
+    def __init__(self, name, url):
+        self.name = name
+        self.url = url
+
+    def __repr__(self):
+        return '<Url %r>' % self.name
 
 class God(db.Model):
     """
@@ -118,6 +134,7 @@ class Myth(db.Model):
         return '<Myth %r>' % self.name
 
 if __name__ == "__main__":
+    print(Url.query.all())
     print(God.query.all())
     print(Hero.query.all())
     print(Location.query.all())
