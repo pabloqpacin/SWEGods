@@ -18,7 +18,7 @@ var bgColors = { "Default": "#81b71a",
                     "Yellow": "#F6BB42",
 };
 
-var godsinfo = [];
+var godsinfoand = [];
 for (var i = 0; i < GodsList.length; i++) {
     var god = {
       'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + GodsList[i].name + '</a>'),
@@ -28,10 +28,10 @@ for (var i = 0; i < GodsList.length; i++) {
       'Father': unsafe(GodsList[i].father),
       'Mother': unsafe(GodsList[i].mother)
     };
-    godsinfo.push(god);
+    godsinfoand.push(god);
 }
 
-var heroesinfo = [];
+var heroesinfoand = [];
 for (var i = 0; i < HeroesList.length; i++) {
     var hero = {
       'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
@@ -41,10 +41,10 @@ for (var i = 0; i < HeroesList.length; i++) {
       'Father': unsafe(HeroesList[i].father),
       'Mother': unsafe(HeroesList[i].mother)
     };
-    heroesinfo.push(hero);
+    heroesinfoand.push(hero);
 }
 
-var locationsinfo = [];
+var locationsinfoand = [];
 for (var i = 0; i < LocationsList.length; i++) {
     var location = {
       'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
@@ -53,10 +53,10 @@ for (var i = 0; i < LocationsList.length; i++) {
       'Myth': unsafe(LocationsList[i].myth),
       'Characters': unsafe(LocationsList[i].gods)
     };
-    locationsinfo.push(location);
+    locationsinfoand.push(location);
 }
 
-var mythsinfo = [];
+var mythsinfoand = [];
 for (var i = 0; i < MythsList.length; i++) {
     var myth = {
       'Name': unsafe('<a href="/myths/' + MythsList[i].name.toLowerCase() + '">' + MythsList[i].name + '</a>'),
@@ -66,7 +66,58 @@ for (var i = 0; i < MythsList.length; i++) {
       'Gods': unsafe(MythsList[i].gods),
       'Characters': unsafe(MythsList[i].characters)
     };
-    mythsinfo.push(myth);
+    mythsinfoand.push(myth);
+}
+
+var godsinfoor = [];
+for (var i = 0; i < GodsList.length; i++) {
+    var god = {
+      'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + GodsList[i].name + '</a>'),
+      'Roman Name': unsafe(GodsList[i].romanname),
+      'Symbol': unsafe(GodsList[i].symbol),
+      'Power': unsafe(GodsList[i].power),
+      'Father': unsafe(GodsList[i].father),
+      'Mother': unsafe(GodsList[i].mother)
+    };
+    godsinfoor.push(god);
+}
+
+var heroesinfoor = [];
+for (var i = 0; i < HeroesList.length; i++) {
+    var hero = {
+      'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
+      'Type': unsafe(HeroesList[i].hero_type),
+      'Power': unsafe(HeroesList[i].power),
+      'Home': unsafe(HeroesList[i].home),
+      'Father': unsafe(HeroesList[i].father),
+      'Mother': unsafe(HeroesList[i].mother)
+    };
+    heroesinfoor.push(hero);
+}
+
+var locationsinfoor = [];
+for (var i = 0; i < LocationsList.length; i++) {
+    var location = {
+      'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
+      'Alternate Name': unsafe(LocationsList[i].altname),
+      'Type': unsafe(LocationsList[i].location_type),
+      'Myth': unsafe(LocationsList[i].myth),
+      'Characters': unsafe(LocationsList[i].gods)
+    };
+    locationsinfoor.push(location);
+}
+
+var mythsinfoor = [];
+for (var i = 0; i < MythsList.length; i++) {
+    var myth = {
+      'Name': unsafe('<a href="/myths/' + MythsList[i].name.toLowerCase() + '">' + MythsList[i].name + '</a>'),
+      'Description': unsafe(MythsList[i].description),
+      'Theme': unsafe(MythsList[i].theme),
+      'Place': unsafe(MythsList[i].place),
+      'Gods': unsafe(MythsList[i].gods),
+      'Characters': unsafe(MythsList[i].characters)
+    };
+    mythsinfoor.push(myth);
 }
 
 ReactDOM.render(
@@ -76,7 +127,7 @@ ReactDOM.render(
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={godsinfo}
+      data={godsinfoand}
 
       sortable={[
         {
@@ -98,13 +149,13 @@ ReactDOM.render(
 
       filterable={['Name', 'Roman Name', 'Symbol', 'Power', 'Father', 'Mother']}
 
-      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={5} pageButtonLimit={100}/>
+      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={8} pageButtonLimit={100}/>
     </div>
     <h4>Heroes</h4>
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={heroesinfo}
+      data={heroesinfoand}
 
       sortable={[
         {
@@ -132,7 +183,7 @@ ReactDOM.render(
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={locationsinfo}
+      data={locationsinfoand}
 
       sortable={[
         {
@@ -159,7 +210,7 @@ ReactDOM.render(
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={mythsinfo}
+      data={mythsinfoand}
 
       sortable={[
         {
@@ -188,7 +239,7 @@ ReactDOM.render(
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={godsinfo}
+      data={godsinfoor}
 
       sortable={[
         {
@@ -210,13 +261,13 @@ ReactDOM.render(
 
       filterable={['Name', 'Roman Name', 'Symbol', 'Power', 'Father', 'Mother']}
 
-      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={5} pageButtonLimit={100}/>
+      defaultSort={{column: 'Name', direction: 'asc'}} itemsPerPage={8} pageButtonLimit={100}/>
     </div>
     <h4>Heroes</h4>
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={heroesinfo}
+      data={heroesinfoor}
 
       sortable={[
         {
@@ -244,7 +295,7 @@ ReactDOM.render(
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={locationsinfo}
+      data={locationsinfoor}
 
       sortable={[
         {
@@ -271,7 +322,7 @@ ReactDOM.render(
     <div>
       <Table className="table" id="table" style={{backgroundColor: bgColors.Yellow}}
 
-      data={mythsinfo}
+      data={mythsinfoor}
 
       sortable={[
         {
