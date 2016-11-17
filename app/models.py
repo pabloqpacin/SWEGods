@@ -46,16 +46,16 @@ class Hero(db.Model):
 
     __tablename__ = 'heroes'
 
-    name = db.Column(db.String, primary_key=True)
-    herotype = db.Column(db.String)
-    father = db.Column(db.String)
-    mother = db.Column(db.String)
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    herotype = db.Column(db.String, nullable=False)
+    father = db.Column(db.String, nullable=False)
+    mother = db.Column(db.String, nullable=False)
     # father_god = db.Column(db.String, db.ForeignKey('god.name'))
     # father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
     # mother_god = db.Column(db.String, db.ForeignKey('god.name'))
     # mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))  
-    power = db.Column(db.String)
-    home = db.Column(db.String)
+    power = db.Column(db.String, nullable=False)
+    home = db.Column(db.String, nullable=False)
 
     def __init__(self, name, herotype, father, mother, power, home):
         self.name = name
@@ -76,11 +76,11 @@ class Location(db.Model):
 
     __tablename__ = 'locations'
 
-    name = db.Column(db.String, primary_key=True)
-    altname = db.Column(db.String)
-    myth = db.Column(db.String, db.ForeignKey('myth.name'))
-    locationtype = db.Column(db.String)
-    gods = db.Column(db.String, db.ForeignKey('god.name'))
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    altname = db.Column(db.String, nullable=False)
+    myth = db.Column(db.String, db.ForeignKey('myth.name'), nullable=False)
+    locationtype = db.Column(db.String, nullable=False)
+    gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
 
     def __init__(self, name, altname, myth, locationtype, gods):
         self.name = name
@@ -99,12 +99,12 @@ class Myth(db.Model):
 
     __tablename__ = 'myths'
 
-    name = db.Column(db.String, primary_key=True)
-    description = db.Column(db.String)
-    gods = db.Column(db.String, db.ForeignKey('god.name'))
-    nongods = db.Column(db.String)
-    place = db.Column(db.String)
-    theme = db.Column(db.String)
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    nongods = db.Column(db.String, nullable=False)
+    place = db.Column(db.String, nullable=False)
+    theme = db.Column(db.String, nullable=False)
 
     def __init__(self, name, description, gods, nongods, place, theme):
         self.name = name
@@ -117,4 +117,8 @@ class Myth(db.Model):
     def __repr__(self):
         return '<Myth %r>' % self.name
 
-print(Hero.query.all())
+if __name__ == "__main__":
+    print(God.query.all())
+    print(Hero.query.all())
+    print(Location.query.all())
+    print(Myth.query.all())
