@@ -39,7 +39,7 @@ var heroesinfoand = [];
 for (var i = 0; i < HeroesList.length; i++) {
     var hero = {
       'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
-      'Type': unsafe(HeroesList[i].hero_type),
+      'Type': unsafe(HeroesList[i].herotype),
       'Power': unsafe(HeroesList[i].power),
       'Home': unsafe(HeroesList[i].home),
       'Father': unsafe(HeroesList[i].father),
@@ -53,7 +53,7 @@ for (var i = 0; i < LocationsList.length; i++) {
     var location = {
       'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
       'Alternate Name': unsafe(LocationsList[i].altname),
-      'Type': unsafe(LocationsList[i].location_type),
+      'Type': unsafe(LocationsList[i].locationtype),
       'Myth': unsafe(LocationsList[i].myth),
       'Characters': unsafe(LocationsList[i].gods)
     };
@@ -90,7 +90,7 @@ var heroesinfoor = [];
 for (var i = 0; i < HeroesList.length; i++) {
     var hero = {
       'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
-      'Type': unsafe(HeroesList[i].hero_type),
+      'Type': unsafe(HeroesList[i].herotype),
       'Power': unsafe(HeroesList[i].power),
       'Home': unsafe(HeroesList[i].home),
       'Father': unsafe(HeroesList[i].father),
@@ -104,7 +104,7 @@ for (var i = 0; i < LocationsList.length; i++) {
     var location = {
       'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
       'Alternate Name': unsafe(LocationsList[i].altname),
-      'Type': unsafe(LocationsList[i].location_type),
+      'Type': unsafe(LocationsList[i].locationtype),
       'Myth': unsafe(LocationsList[i].myth),
       'Characters': unsafe(LocationsList[i].gods)
     };
