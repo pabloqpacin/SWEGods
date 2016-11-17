@@ -27,6 +27,36 @@ app.config['STATIC_FONTS_FOLDER'] = os.path.join('.', 'static', 'fonts')
 app.config['STATIC_JS_FOLDER'] = os.path.join('.', 'static', 'js')
 app.config['STATIC_IMAGES_FOLDER'] = os.path.join('.', 'static', 'img')
 
+#Generate a tuple of queries (and query then or query)
+#Parameters:
+####searchterm: String with search terms seperated by spaces
+####tablename: String with name of tablename
+####columns: List of column names as strings
+#Example:
+# generateQuery("hera zeus", 'gods', ['name', 'romanname', 'power', 'symbol', 'father', 'mother'])
+# returns a tuple of the searches ('hera AND zeus', 'hera OR zeus')
+        
+def generateQuery(searchterm, tablename, columns):
+        terms = searchterm.split()
+        
+        columnstring = ' || \' \' || '.join(columns)
+        
+        first = True
+        andQ = ''
+        orQ = ''
+        
+        for term in terms:
+            if re.match(r'\A[\w-]+\Z', term):
+                if not first:
+                    andQ += ' INTERSECT '
+                    orQ += ' UNION '
+                first = False
+                andQ += 'SELECT * FROM ' + tablename +' WHERE to_tsvector(' + columnstring +') @@ to_tsquery(\'english\', \'' + term + '\')'
+                orQ += 'SELECT * FROM ' + tablename +' WHERE to_tsvector(' + columnstring +') @@ to_tsquery(\'english\', \'' + term + '\')'
+                    
+        return (andQ, orQ)
+
+
 # Shows error message
 def error_wrapper(content):
 	return render_template('error_template.html', error_message=content)
