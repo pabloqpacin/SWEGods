@@ -318,16 +318,8 @@ def search_model():
         locationsAndResult = db.engine.execute(locationsAndQuery)
         locationsOrResult = db.engine.execute(locationsOrQuery)
         
-        for row in godsAndResult:
-            print(row)
-            for col in row:
-                print(boldSearchTerms(q,col))
-    
-    search_result = []
-    search_result.append(q)
-    print(search_result)
-    return render_template('searchtemp.html', search = search_result)
 
+        for row in godsAndResult:
             obi = {}
             obi["name"] = boldSearchTerms(q,row["name"])
             obi["romanname"] = boldSearchTerms(q,row["romanname"])
