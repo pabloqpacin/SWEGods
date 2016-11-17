@@ -1,12 +1,56 @@
-// console.log(s.name);
-//
-// ReactDOM.render(
-//     <p>HELLLO</p>,
-//     document.getElementById('gods')
-// );
 
-console.log(GodsList);
-console.log(s.name);
+console.log("GOD AND");
+console.log(godand.name);
+console.log("HERO AND");
+console.log(heroand.name);
+console.log("LOCATION AND");
+console.log(locationand.name);
+console.log("MYTH AND");
+console.log(mythand.name);
+console.log("GOD AND");
+console.log(godor.name);
+console.log("HERO AND");
+console.log(heroor.name);
+console.log("LOCATION AND");
+console.log(locationor.name);
+console.log("MYTH AND");
+console.log(mythor.name);
+
+var godandrep = godand.name.replace(/'/g, '"');
+var godandobject = JSON.parse(godandrep);
+var heroandrep = heroand.name.replace(/'/g, '"');
+var heroandobject = JSON.parse(heroandrep);
+var locationandrep = locationand.name.replace(/'/g, '"');
+var locationandobject = JSON.parse(locationandrep);
+// var mythandrep = mythand.name.replace(/'/g, '"');
+// var mythandobject = JSON.parse(mythandrep);
+var godorrep = godor.name.replace(/'/g, '"');
+var godorobject = JSON.parse(godorrep);
+var heroorrep = heroor.name.replace(/'/g, '"');
+var heroorobject = JSON.parse(heroorrep);
+var locationorrep = locationor.name.replace(/'/g, '"');
+var locationorobject = JSON.parse(locationorrep);
+// var mythorrep = mythor.name.replace(/'/g, '"');
+// var mythorobject = JSON.parse(mythorrep);
+
+console.log('GOD AND OBJ');
+console.log(godandobject);
+console.log('HERO AND OBJ');
+console.log(heroandobject);
+console.log('LOCATION AND OBJ');
+console.log(locationandobject);
+// console.log('MYTH AND OBJ');
+// console.log(mythandobject);
+console.log('GOD OR OBJ');
+console.log(godorobject);
+console.log('HERO OR OBJ');
+console.log(heroorobject);
+console.log('LOCATION OR OBJ');
+console.log(locationorobject);
+// console.log('MYTH OR OBJ');
+// console.log(mythorobject);
+
+
 
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
@@ -20,42 +64,45 @@ var bgColors = { "Default": "#81b71a",
 };
 
 var godsinfoand = [];
-for (var i = 0; i < GodsList.length; i++) {
-    if (GodsList[i].name.toLowerCase().indexOf(s.name.toLowerCase()) !== -1) {
-      var select = '<b>' + GodsList[i].name + '</b>';
-      var god = {
-        'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + select + '</a>'),
-        'Roman Name': unsafe(GodsList[i].romanname),
-        'Symbol': unsafe(GodsList[i].symbol),
-        'Power': unsafe(GodsList[i].power),
-        'Father': unsafe(GodsList[i].father),
-        'Mother': unsafe(GodsList[i].mother)
-      };
+for (var i = 0; i < godandobject.length; i++) {
+    var hrefname = godandobject[i].name.replace('<b>', '');
+    var hrefname = hrefname.replace('</b>', '');
+    var god = {
+      'Name': unsafe('<a href="/gods/' + hrefname.toLowerCase() + '">' + godandobject[i].name + '</a>'),
+      'Roman Name': unsafe(godandobject[i].romanname),
+      'Symbol': unsafe(godandobject[i].symbol),
+      'Power': unsafe(godandobject[i].power),
+      'Father': unsafe(godandobject[i].father),
+      'Mother': unsafe(godandobject[i].mother)
+    };
       godsinfoand.push(god);
-    }
 }
 
 var heroesinfoand = [];
-for (var i = 0; i < HeroesList.length; i++) {
+for (var i = 0; i < heroandobject.length; i++) {
+    var hrefname = heroandobject[i].name.replace('<b>', '');
+    var hrefname = hrefname.replace('</b>', '');
     var hero = {
-      'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
-      'Type': unsafe(HeroesList[i].herotype),
-      'Power': unsafe(HeroesList[i].power),
-      'Home': unsafe(HeroesList[i].home),
-      'Father': unsafe(HeroesList[i].father),
-      'Mother': unsafe(HeroesList[i].mother)
+      'Name': unsafe('<a href="/heroes/' + hrefname.toLowerCase() + '">' + heroandobject[i].name + '</a>'),
+      'Type': unsafe(heroandobject[i].herotype),
+      'Power': unsafe(heroandobject[i].power),
+      'Home': unsafe(heroandobject[i].home),
+      'Father': unsafe(heroandobject[i].father),
+      'Mother': unsafe(heroandobject[i].mother)
     };
     heroesinfoand.push(hero);
 }
 
 var locationsinfoand = [];
-for (var i = 0; i < LocationsList.length; i++) {
+for (var i = 0; i < locationandobject.length; i++) {
+    var hrefname = locationandobject[i].name.replace('<b>', '');
+    var hrefname = hrefname.replace('</b>', '');
     var location = {
-      'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
-      'Alternate Name': unsafe(LocationsList[i].altname),
-      'Type': unsafe(LocationsList[i].locationtype),
-      'Myth': unsafe(LocationsList[i].myth),
-      'Characters': unsafe(LocationsList[i].gods)
+      'Name': unsafe('<a href="/locations/' + hrefname.toLowerCase() + '">' + locationandobject[i].name + '</a>'),
+      'Alternate Name': unsafe(locationandobject[i].altname),
+      'Type': unsafe(locationandobject[i].locationtype),
+      'Myth': unsafe(locationandobject[i].myth),
+      'Characters': unsafe(locationandobject[i].gods)
     };
     locationsinfoand.push(location);
 }
@@ -74,39 +121,45 @@ for (var i = 0; i < MythsList.length; i++) {
 }
 
 var godsinfoor = [];
-for (var i = 0; i < GodsList.length; i++) {
+for (var i = 0; i < godorobject.length; i++) {
+    var hrefname = godorobject[i].name.replace('<b>', '');
+    var hrefname = hrefname.replace('</b>', '');
     var god = {
-      'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + GodsList[i].name + '</a>'),
-      'Roman Name': unsafe(GodsList[i].romanname),
-      'Symbol': unsafe(GodsList[i].symbol),
-      'Power': unsafe(GodsList[i].power),
-      'Father': unsafe(GodsList[i].father),
-      'Mother': unsafe(GodsList[i].mother)
+      'Name': unsafe('<a href="/gods/' + hrefname.toLowerCase() + '">' + godorobject[i].name + '</a>'),
+      'Roman Name': unsafe(godorobject[i].romanname),
+      'Symbol': unsafe(godorobject[i].symbol),
+      'Power': unsafe(godorobject[i].power),
+      'Father': unsafe(godorobject[i].father),
+      'Mother': unsafe(godorobject[i].mother)
     };
     godsinfoor.push(god);
 }
 
 var heroesinfoor = [];
-for (var i = 0; i < HeroesList.length; i++) {
+for (var i = 0; i < heroorobject.length; i++) {
+    var hrefname = heroorobject[i].name.replace('<b>', '');
+    var hrefname = hrefname.replace('</b>', '');
     var hero = {
-      'Name': unsafe('<a href="/heroes/' + HeroesList[i].name.toLowerCase() + '">' + HeroesList[i].name + '</a>'),
-      'Type': unsafe(HeroesList[i].herotype),
-      'Power': unsafe(HeroesList[i].power),
-      'Home': unsafe(HeroesList[i].home),
-      'Father': unsafe(HeroesList[i].father),
-      'Mother': unsafe(HeroesList[i].mother)
+      'Name': unsafe('<a href="/heroes/' + hrefname.toLowerCase() + '">' + heroorobject[i].name + '</a>'),
+      'Type': unsafe(heroorobject[i].herotype),
+      'Power': unsafe(heroorobject[i].power),
+      'Home': unsafe(heroorobject[i].home),
+      'Father': unsafe(heroorobject[i].father),
+      'Mother': unsafe(heroorobject[i].mother)
     };
     heroesinfoor.push(hero);
 }
 
 var locationsinfoor = [];
-for (var i = 0; i < LocationsList.length; i++) {
+for (var i = 0; i < locationorobject.length; i++) {
+    var hrefname = locationorobject[i].name.replace('<b>', '');
+    var hrefname = hrefname.replace('</b>', '');
     var location = {
-      'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
-      'Alternate Name': unsafe(LocationsList[i].altname),
-      'Type': unsafe(LocationsList[i].locationtype),
-      'Myth': unsafe(LocationsList[i].myth),
-      'Characters': unsafe(LocationsList[i].gods)
+      'Name': unsafe('<a href="/locations/' + hrefname.toLowerCase() + '">' + locationorobject[i].name + '</a>'),
+      'Alternate Name': unsafe(locationorobject[i].altname),
+      'Type': unsafe(locationorobject[i].locationtype),
+      'Myth': unsafe(locationorobject[i].myth),
+      'Characters': unsafe(locationorobject[i].gods)
     };
     locationsinfoor.push(location);
 }

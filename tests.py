@@ -1,27 +1,30 @@
-import IDB3
-from IDB3 import *
-import app
-from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort
-import unittest
-import os
-import json
-from flask_testing import TestCase
+from IDB3 import app
+from unittest import main, TestCase
+from IDB3 import db, God, Hero, Location, Myth
 
-# app = Flask(__name__)
+GOD_COLS = ['name', 'power', 'romanname', 'power', 'symbol', 'father', 'mother']
+HERO_COLS = ['name', 'herotype', 'father', 'mother', 'power', 'home']
+LOCATION_COLS = ['name', 'altname', 'myth', 'locationtype', 'gods']
+MYTH_COLS = ['name', 'description', 'gods', 'nongods', 'place', 'theme']
+MODELS_TO_COLS = {
+    God: GOD_COLS,
+    Hero: HERO_COLS,
+    Location: LOCATION_COLS,
+    Myth: MYTH_COLS
+}
 
-class tests(unittest.TestCase) :
 
-    def create_app(self):
-
-        app = Flask(__name__)
-        app.config['TESTING'] = True
-        return app
+class TestIDB(TestCase):
 
     def setUp(self):
         # Create Flask test client
-        self.app = IDB3.app.test_client()
+        self.app = app.test_client()
 
-        self.a = [index, about_page, gods_model, heroes_model, creatures_model, myths_model, god_page, hero_page, location_page, myth_page, static_files, ]
+        # self.a = [index, about_page, gods_model, heroes_model, creatures_model, myths_model, god_page, hero_page, location_page, myth_page, static_files, ]
+
+    #------
+    # index
+    #------
 
     def test_index(self):
         self.assertEqual(self.app.get('/').status, '200 OK')
@@ -113,5 +116,28 @@ class tests(unittest.TestCase) :
     def test_index_30(self):
         self.assertEqual(self.app.get('/search/myths').status, '404 NOT FOUND')
 
-if(__name__ == '__main__'):
-    unittest.main()
+
+    #-------
+    # models
+    #-------
+
+    def test_models_work(self):
+        for model in MODELS_TO_COLS:
+            with self.subTest():
+                model.query.all()
+
+    def test_models_correct_cols(self):
+        for model in MODELS_TO_COLS:
+            with self.subTest():
+                for col in MODELS_TO_COLS[model]:
+                    with self.subTest():
+                        self.assertTrue(hasattr(model, col))
+
+
+
+#------
+# main
+#------
+if __name__ == "__main__" :
+    main()
+
