@@ -48,5 +48,5 @@ tests.tmp:
 	coverage report -m >> tests.tmp
 	cat tests.tmp
 
-test: tests.tmp check
+test: check
 	
