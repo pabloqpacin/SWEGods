@@ -22,7 +22,7 @@ var bgColors = { "Default": "#81b71a",
 var godsinfoand = [];
 for (var i = 0; i < GodsList.length; i++) {
     if (GodsList[i].name.toLowerCase().indexOf(s.name.toLowerCase()) !== -1) {
-      var select = '<b>' + GodsList[i].name.toLowerCase() + '</b>';
+      var select = '<b>' + GodsList[i].name + '</b>';
       var god = {
         'Name': unsafe('<a href="/gods/' + GodsList[i].name.toLowerCase() + '">' + select + '</a>'),
         'Roman Name': unsafe(GodsList[i].romanname),

@@ -192,7 +192,7 @@ def myth_page(myth):
 			myth_info.append(i['theme'])
 			myth_info.append(i['place'])
 			myth_info.append(i['gods'])
-			myth_info.append(i['characters'])
+			myth_info.append(i['nongods'])
 			myth_info.append(i['url'])
 	return render_template('mythtemp.html', myth = myth_info)
 

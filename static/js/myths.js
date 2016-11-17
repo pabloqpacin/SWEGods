@@ -19,7 +19,7 @@ for (var i = 0; i < MythsList.length; i++) {
       'Theme': unsafe(MythsList[i].theme),
       'Place': unsafe(MythsList[i].place),
       'Gods': unsafe(MythsList[i].gods),
-      'Characters': unsafe(MythsList[i].characters)
+      'Non-Gods': unsafe(MythsList[i].nongods)
     };
     mythsinfo.push(myth);
 }
