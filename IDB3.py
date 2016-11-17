@@ -10,10 +10,22 @@ app = Flask(__name__)
 
 api = flask_restful.Api(app)
 
+class UrlHandler(flask_restful.Resource):
+  def get(self, url_name):
+    url = Url.query.filter_by(name=url_name)
+    url = url.first()
+
+    if url:
+      url_response = url.url
+    
+    return url_response
+    
+api.add_resource(UrlHandler, '/api/urls/<string:url_name>') 
+
 class GodsHandler(flask_restful.Resource):
   def get(self):
     gods = God.query.all()
-
+    
     gods_response = {}
     for god in gods:
       god_data = {
@@ -28,7 +40,7 @@ class GodsHandler(flask_restful.Resource):
 
     return jsonify(gods_response)
 
-api.add_resource(GodsHandler, '/api/gods/')
+api.add_resource(GodsHandler, '/api/gods/') 
 
 class GodHandler(flask_restful.Resource):
   def get(self, god_name):
@@ -52,7 +64,7 @@ api.add_resource(GodHandler, '/api/gods/<string:god_name>')
 class HeroesHandler(flask_restful.Resource):
   def get(self):
     heroes = Hero.query.all()
-
+    
     heroes_response = {}
     for hero in heroes:
       hero_data = {
@@ -67,7 +79,7 @@ class HeroesHandler(flask_restful.Resource):
 
     return jsonify(heroes_response)
 
-api.add_resource(HeroesHandler, '/api/heroes/')
+api.add_resource(HeroesHandler, '/api/heroes/') 
 
 class HeroHandler(flask_restful.Resource):
   def get(self, hero_name):
@@ -91,7 +103,7 @@ api.add_resource(HeroHandler, '/api/heroes/<string:hero_name>')
 class MythsHandler(flask_restful.Resource):
   def get(self):
     myths = Myth.query.all()
-
+    
     myths_response = {}
     for myth in myths:
       myth_data = {
@@ -106,7 +118,7 @@ class MythsHandler(flask_restful.Resource):
 
     return jsonify(myths_response)
 
-api.add_resource(MythsHandler, '/api/myths/')
+api.add_resource(MythsHandler, '/api/myths/') 
 
 class MythHandler(flask_restful.Resource):
   def get(self, myth_name):
@@ -130,7 +142,7 @@ api.add_resource(MythHandler, '/api/myths/<string:myth_name>')
 class LocationsHandler(flask_restful.Resource):
   def get(self):
     locations = Location.query.all()
-
+    
     locations_response = {}
     for location in locations:
       location_data = {
@@ -144,7 +156,7 @@ class LocationsHandler(flask_restful.Resource):
 
     return jsonify(locations_response)
 
-api.add_resource(LocationsHandler, '/api/locations/')
+api.add_resource(LocationsHandler, '/api/locations/') 
 
 class LocationHandler(flask_restful.Resource):
   def get(self, location_name):
@@ -195,16 +207,16 @@ app.config['STATIC_IMAGES_FOLDER'] = os.path.join('.', 'static', 'img')
 #Example:
 # generateQuery("hera zeus", 'gods', ['name', 'romanname', 'power', 'symbol', 'father', 'mother'])
 # returns a tuple of the searches ('hera AND zeus', 'hera OR zeus')
-
+        
 def generateQuery(searchterm, tablename, columns):
         terms = searchterm.split()
-
+        
         columnstring = ' || \' \' || '.join(columns)
-
+        
         first = True
         andQ = ''
         orQ = ''
-
+        
         for term in terms:
             if re.match(r'\A[\w-]+\Z', term):
                 if not first:
@@ -213,9 +225,9 @@ def generateQuery(searchterm, tablename, columns):
                 first = False
                 andQ += 'SELECT * FROM ' + tablename +' WHERE to_tsvector(' + columnstring +') @@ to_tsquery(\'english\', \'' + term + '\')'
                 orQ += 'SELECT * FROM ' + tablename +' WHERE to_tsvector(' + columnstring +') @@ to_tsquery(\'english\', \'' + term + '\')'
-
+                    
         return (andQ, orQ)
-
+        
 def boldSearchTerms(searchterm, inputstring):
     terms = searchterm.split()
     for term in terms:
@@ -284,19 +296,19 @@ def search_model():
         tablename = 'gods'
         columns = db.engine.execute('Select * from ' + tablename).keys()
         godsAndQuery, godsOrQuery = generateQuery(q, tablename, columns)
-
+        
         tablename = 'heroes'
         columns = db.engine.execute('Select * from ' + tablename).keys()
         heroesAndQuery, heroesOrQuery = generateQuery(q, tablename, columns)
-
+        
         tablename = 'myths'
         columns = db.engine.execute('Select * from ' + tablename).keys()
         mythsAndQuery, mythsOrQuery = generateQuery(q, tablename, columns)
-
+        
         tablename = 'locations'
         columns = db.engine.execute('Select * from ' + tablename).keys()
         locationsAndQuery, locationsOrQuery = generateQuery(q, tablename, columns)
-
+        
         godsAndResult = db.engine.execute(godsAndQuery)
         godsOrResult = db.engine.execute(godsOrQuery)
         heroesAndResult = db.engine.execute(heroesAndQuery)
@@ -305,20 +317,17 @@ def search_model():
         mythsOrResult = db.engine.execute(mythsOrQuery)
         locationsAndResult = db.engine.execute(locationsAndQuery)
         locationsOrResult = db.engine.execute(locationsOrQuery)
-
-        god_and_result = []
-        hero_and_result = []
-        location_and_result = []
-        myth_and_result = []
-
-        god_or_result = []
-        hero_or_result = []
-        location_or_result = []
-        myth_or_result = []
-
-
-
+        
         for row in godsAndResult:
+            print(row)
+            for col in row:
+                print(boldSearchTerms(q,col))
+    
+    search_result = []
+    search_result.append(q)
+    print(search_result)
+    return render_template('searchtemp.html', search = search_result)
+
             obi = {}
             obi["name"] = boldSearchTerms(q,row["name"])
             obi["romanname"] = boldSearchTerms(q,row["romanname"])
