@@ -41,5 +41,12 @@ clean:
 	rm -f *.pyc
 	rm -f IDB3.log
 	rm -f IDB3.html
+	rm -f tests.tmp
 
-test: IDB.html IDB.log check
+tests.tmp:
+	coverage run --branch --omit=venv/* tests.py > tests.tmp 2>&1
+	coverage report -m >> tests.tmp
+	cat tests.tmp
+
+test: IDB.html IDB.log tests.tmp check
+	
