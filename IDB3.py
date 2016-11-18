@@ -1,3 +1,7 @@
+"""
+    Backend for serving files.
+"""
+
 from flask import Flask, send_from_directory, send_file, escape, Markup, render_template, abort, request, jsonify
 import re
 import os

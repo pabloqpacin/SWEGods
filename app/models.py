@@ -1,3 +1,7 @@
+"""
+    SQLAlchemy models for the Postgres database.
+"""
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 

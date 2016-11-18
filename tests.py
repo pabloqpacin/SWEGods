@@ -1,3 +1,7 @@
+"""
+    Tests for IDB3.py and app/models.py
+"""
+
 from IDB3 import app
 from unittest import main, TestCase
 from IDB3 import db, God, Hero, Location, Myth
