@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 api = flask_restful.Api(app)
 
+# API Function to grab url's from the db
 class UrlHandler(flask_restful.Resource):
   def get(self, url_name):
     url = Url.query.filter_by(name=url_name)
@@ -22,6 +23,7 @@ class UrlHandler(flask_restful.Resource):
     
 api.add_resource(UrlHandler, '/api/urls/<string:url_name>') 
 
+# API Function to grab a god given god name from the db
 class GodsHandler(flask_restful.Resource):
   def get(self):
     gods = God.query.all()
@@ -42,6 +44,7 @@ class GodsHandler(flask_restful.Resource):
 
 api.add_resource(GodsHandler, '/api/gods/') 
 
+# API Function to grab a god given god name from the db
 class GodHandler(flask_restful.Resource):
   def get(self, god_name):
     god = God.query.filter_by(name=god_name)
@@ -61,6 +64,7 @@ class GodHandler(flask_restful.Resource):
     return jsonify(god_response)
 api.add_resource(GodHandler, '/api/gods/<string:god_name>')
 
+# API Function to grab a all gods from the db
 class HeroesHandler(flask_restful.Resource):
   def get(self):
     heroes = Hero.query.all()
@@ -81,6 +85,7 @@ class HeroesHandler(flask_restful.Resource):
 
 api.add_resource(HeroesHandler, '/api/heroes/') 
 
+# API Function to grab a hero given hero name from the db
 class HeroHandler(flask_restful.Resource):
   def get(self, hero_name):
     hero = Hero.query.filter_by(name=hero_name)
@@ -100,6 +105,7 @@ class HeroHandler(flask_restful.Resource):
     return jsonify(hero_response)
 api.add_resource(HeroHandler, '/api/heroes/<string:hero_name>')
 
+# API Function to grab a all myths from the db
 class MythsHandler(flask_restful.Resource):
   def get(self):
     myths = Myth.query.all()
@@ -120,6 +126,7 @@ class MythsHandler(flask_restful.Resource):
 
 api.add_resource(MythsHandler, '/api/myths/') 
 
+# API Function to grab a myth given myth name from the db
 class MythHandler(flask_restful.Resource):
   def get(self, myth_name):
     myth = Myth.query.filter_by(name=myth_name)
@@ -139,6 +146,7 @@ class MythHandler(flask_restful.Resource):
     return jsonify(myth_response)
 api.add_resource(MythHandler, '/api/myths/<string:myth_name>')
 
+# API Function to grab a all locations from the db
 class LocationsHandler(flask_restful.Resource):
   def get(self):
     locations = Location.query.all()
@@ -158,6 +166,7 @@ class LocationsHandler(flask_restful.Resource):
 
 api.add_resource(LocationsHandler, '/api/locations/') 
 
+# API Function to grab a location given location name from the db
 class LocationHandler(flask_restful.Resource):
   def get(self, location_name):
     location = Location.query.filter_by(name=location_name)
