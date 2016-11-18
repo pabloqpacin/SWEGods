@@ -284,9 +284,8 @@
 			<div class="container">
 		    <h2 class="text-center" > Unit Tests </h2>
 				<h2 class="text-center" >
-					<button class="btn btn-success btn-lg clearBtn" onclick="myFunction()">Run Unittests</button>
-					<pre id="runTests"></pre>
-					<% %>
+					<button class="btn btn-success btn-lg clearBtn" onclick="load_test()">Run Unittests</button>
+			        <pre id="runTests"><pre>
 				</h2>
 			</div>
 
@@ -301,11 +300,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<script type ="text/javascript">
-		function myFunction() {
-		    document.getElementById("runTests").innerHTML = "Running unittests"
-			//url is "/runtests" //returns plaintext
-			exec("~/tests.py")
-			// Need to add running code here
+		function load_test() {
+		    document.getElementById("runTests").innerHTML='<object type="text/html" data="tests.html" ></object>';
 		}
 	</script>
 
