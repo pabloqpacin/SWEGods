@@ -300,9 +300,9 @@ def myths_model():
 		return send_file(app.config['STATIC_MYTHS_LIST'])
 	return error_wrapper('Myths Model page to be added'), 404
 
-@app.route('/tests')
-def tests():
-    output = subprocess.Popen('python tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
+@app.route('/performtests')
+def runningTests():
+    output = subprocess.Popen('python3 tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
     output.wait()
     stuff, output = output.communicate()
     return jsonify(**{'result': str(output)})

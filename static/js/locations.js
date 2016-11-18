@@ -1,5 +1,21 @@
 console.log(LocationsList);
 
+var godbunch = [];
+var herobunch = [];
+var mythbunch = [];
+
+for (var i = 0; i < GodsList.length; i++) {
+  godbunch.push(GodsList[i].name.toLowerCase());
+}
+
+for (var i = 0; i < HeroesList.length; i++) {
+  herobunch.push(HeroesList[i].name.toLowerCase());
+}
+
+for (var i = 0; i < MythsList.length; i++) {
+  herobunch.push(MythsList[i].name.toLowerCase());
+}
+
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
 
@@ -13,11 +29,17 @@ var bgColors = { "Default": "#81b71a",
 
 var locationsinfo = [];
 for (var i = 0; i < LocationsList.length; i++) {
+    var mythname = LocationsList[i].myth;
+
+    if (mythbunch.indexOf(LocationsList[i].myth.toLowerCase()) !== -1) {
+      mythname = '<a href="/gods/' + LocationsList[i].myth.toLowerCase() + '">' + LocationsList[i].myth+ '</a>';
+    }
+
     var location = {
       'Name': unsafe('<a href="/locations/' + LocationsList[i].name.toLowerCase() + '">' + LocationsList[i].name + '</a>'),
       'Alternate Name': unsafe(LocationsList[i].altname),
       'Type': unsafe(LocationsList[i].locationtype),
-      'Myth': unsafe(LocationsList[i].myth),
+      'Myth': unsafe(mythname),
       'Characters': unsafe(LocationsList[i].gods)
     };
     locationsinfo.push(location);

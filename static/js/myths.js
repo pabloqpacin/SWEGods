@@ -1,5 +1,11 @@
 console.log(MythsList);
 
+var locationbunch = [];
+
+for (var i = 0; i < LocationsList.length; i++) {
+  locationbunch.push(LocationsList[i].name.toLowerCase());
+}
+
 var Table = Reactable.Table,
     unsafe = Reactable.unsafe;
 
@@ -13,11 +19,17 @@ var bgColors = { "Default": "#81b71a",
 
 var mythsinfo = [];
 for (var i = 0; i < MythsList.length; i++) {
+    var placename = MythsList[i].place;
+
+    if (locationbunch.indexOf(MythsList[i].place.toLowerCase()) !== -1) {
+      placename = '<a href="/gods/' + MythsList[i].place.toLowerCase() + '">' + MythsList[i].place + '</a>';
+    }
+
     var myth = {
       'Name': unsafe('<a href="/myths/' + MythsList[i].name.toLowerCase() + '">' + MythsList[i].name + '</a>'),
       'Description': unsafe(MythsList[i].description),
       'Theme': unsafe(MythsList[i].theme),
-      'Place': unsafe(MythsList[i].place),
+      'Place': unsafe(placename),
       'Gods': unsafe(MythsList[i].gods),
       'Non-Gods': unsafe(MythsList[i].nongods)
     };
