@@ -301,11 +301,15 @@ def myths_model():
 	return error_wrapper('Myths Model page to be added'), 404
 
 @app.route('/performtests')
-def runningTests():
+def performtests():
     output = subprocess.Popen('python3 tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
     output.wait()
     stuff, output = output.communicate()
     return jsonify(**{'result': str(output)})
+
+@app.route('/donkey')
+def do_this():
+    return "Donkey"
 
 
 @app.route('/search')
