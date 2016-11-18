@@ -296,7 +296,7 @@ def myths_model():
 	return error_wrapper('Myths Model page to be added'), 404
 
 @app.route('/tests')
-def testinate():
+def tests():
     output = subprocess.Popen('python /var/www/html/SWEGods/tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
     output.wait()
     stuff, output = output.communicate()
