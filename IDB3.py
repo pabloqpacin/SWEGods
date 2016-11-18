@@ -9,6 +9,7 @@ import json
 import flask_restful
 from app.models import *
 from flask_sqlalchemy import SQLAlchemy
+import subprocess
 
 app = Flask(__name__)
 
@@ -298,6 +299,13 @@ def myths_model():
 	if os.path.exists(app.config['STATIC_MYTHS_LIST']):
 		return send_file(app.config['STATIC_MYTHS_LIST'])
 	return error_wrapper('Myths Model page to be added'), 404
+
+@app.route('/tests')
+def tests():
+    output = subprocess.Popen('python tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
+    output.wait()
+    stuff, output = output.communicate()
+    return jsonify(**{'result': str(output)})
 
 
 @app.route('/search')
