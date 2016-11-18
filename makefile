@@ -40,8 +40,8 @@ clean:
 	rm -f tests.tmp
 
 tests.tmp:
-	coverage run --branch --omit=venv/* tests.py > tests.tmp 2>&1
-	coverage report -m >> tests.tmp
+	coverage run --branch --omit=venv/* tests.py 2>&1
+	coverage report -m > tests.tmp
 	cat tests.tmp
 
 test: IDB.log check
