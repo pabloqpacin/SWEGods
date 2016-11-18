@@ -1,161 +1,104 @@
+"""
+    SQLAlchemy models for the Postgres database.
+"""
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5421/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@greekmythology.me:5432/greekmyths'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# helper functions for columns
-def character_column():
-    return db.Column('character_id', db.Integer, db.ForeignKey('character.id'))
-
-def god_column():
-    return db.Column('god_id', db.Integer, db.ForeignKey('god.id'))
-
-def hero_column():
-    return db.Column('hero_id', db.Integer, db.ForeignKey('hero.id'))
-
-def creature_column():
-    return db.Column('creature_id', db.Integer, db.ForeignKey('creature.id'))
-
-def myth_column():
-    return db.Column('myth_id', db.Integer, db.ForeignKey('myth.id'))
-
-"""
-Maps characters to parents if the parents are not gods
-"""
-characters_to_parents = db.Table('characters_to_parents',
-                                 character_column(), character_column())
-
-"""
-Maps gods to their children
-"""
-gods_to_children = db.Table('gods_to_children',
-                            god_column(), character_column())
-
-"""
-Maps creatures to related characters
-"""
-creatures_to_characters = db.Table('creatures_to_characters',
-                                   creature_column(), character_column())
-
-"""
-Maps creatures to related myths
-"""
-creatures_to_myths = db.Table('creatures_to_myths',
-                              creature_column(), myth_column())
-
-"""
-Maps myths to main characters
-"""
-myths_to_characters = db.Table('myths_to_characters',
-                               myth_column(), character_column())
-
-"""
-Maps myths to related gods
-"""
-myths_to_gods = db.Table('myths_to_gods', myth_column(), god_column())
-
-
-class Character(db.Model):
-    """
-    Base class for gods, heroes, and creatures.
-    """
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    parents = db.relationship('Character', secondary=characters_to_parents)
-
-    def __init__(self, name):
-        self.name = name
-
-    def __repr__(self):
-        return '<Character %r>' % self.name
-
-
-class God(Character):
+class Url(db.Model):
     """
     Information about a god in Greek mythology.
     """
 
-    power = db.Column(db.String)
-    olympian = db.Column(db.Boolean)
-    children = db.relationship('Character', secondary=gods_to_children,
-                               backref=db.backref('parents', lazy='dynamic'))
-    symbol = db.Column(db.String)
-    roman_counterpart = db.Column(db.String)
+    __tablename__ = 'urls'
 
-    def __init__(self, name, power, olympian, symbol, roman_counterpart):
-        super().__init__(self, name)
-        self.power = power
-        self.olympian = olympian
-        self.symbol = symbol
-        self.roman_counterpart = roman_counterpart
+    name = db.Column(db.String, primary_key=True)
+    url  = db.Column(db.String)
+
+    def __init__(self, name, url):
+        self.name = name
+        self.url = url
+
+    def __repr__(self):
+        return '<Url %r>' % self.name
+
+class God(db.Model):
+    """
+    Information about a god in Greek mythology.
+    """
+
+    __tablename__ = 'gods'
+
+    name = db.Column(db.String, primary_key=True)
+    romanname = db.Column(db.String)
+    power = db.Column(db.String)
+    symbol = db.Column(db.String)
+    father = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    mother = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
 
     def __repr__(self):
         return '<God %r>' % self.name
 
 
-class Hero(Character):
+class Hero(db.Model):
     """
     Information about a hero in Greek mythology.
     """
 
-    hero_type = db.Column(db.String)
-    strength_or_power = db.Column(db.String)
-    death = db.Column(db.String)
-    hero_origins = db.Column(db.String)
+    __tablename__ = 'heroes'
 
-    def __init__(self, name, hero_type, strength_or_power, death, hero_origins):
-        super().__init__(self, name)
-        self.hero_type = hero_type
-        self.strength_or_power = strength_or_power
-        self.death = death
-        self.hero_origins = hero_origins
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    herotype = db.Column(db.String, nullable=False)
+    father = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    mother = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    power = db.Column(db.String, nullable=False)
+    home = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return '<Hero %r>' % self.name
 
 
-class Creature(Character):
+class Location(db.Model):
     """
-    Information about a creature from Greek mythology,
-    excludes gods and heroes.
+    Information about a location from Greek mythology.
     """
 
-    creature_type = db.Column(db.String)
-    characteristics = db.Column(db.String)
-    related_characters = db.relationship('Character',
-                                         secondary=creatures_to_characters)
-    related_myths = db.relationship('Myth',
-                                    secondary=creatures_to_myths)
+    __tablename__ = 'locations'
 
-    def __init__(self, name, creature_type, characteristics):
-        super().__init__(self, name)
-        self.creature_type = creature_type
-        self.characteristics = characteristics
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    altname = db.Column(db.String, nullable=False)
+    myth = db.Column(db.String, db.ForeignKey('myth.name'), nullable=False)
+    locationtype = db.Column(db.String, nullable=False)
+    gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
 
     def __repr__(self):
-        return '<Creature %r>' % self.name
+        return '<Location %r>' % self.name
 
 class Myth(db.Model):
     """
     Information about a myth from Greek mythology.
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    main_characters = db.relationship('Character',
-                                      secondary=myths_to_characters)
-    related_gods = db.relationship('God', secondary=myths_to_gods)
-    summary = db.Column(db.String)
-    impact_on_greek_life = db.Column(db.String)
+    __tablename__ = 'myths'
 
-    def __init__(self, name, summary, impact_on_greek_life):
-        self.name = name
-        self.summary = summary
-        self.impact_on_greek_life = impact_on_greek_life
+    name = db.Column(db.String, primary_key=True, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    nongods = db.Column(db.String, nullable=False)
+    place = db.Column(db.String, nullable=False)
+    theme = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return '<Myth %r>' % self.name
+
+if __name__ == "__main__":
+    print(Url.query.all())
+    print(God.query.all())
+    print(Hero.query.all())
+    print(Location.query.all())
+    print(Myth.query.all())
