@@ -26,7 +26,7 @@ class TestIDB(TestCase):
     # index
     #------
 
-    def test_index(self):
+    def test_index_1(self):
         self.assertEqual(self.app.get('/').status, '200 OK')
 
     def test_index_2(self):
@@ -123,14 +123,14 @@ class TestIDB(TestCase):
 
     def test_models_work(self):
         for model in MODELS_TO_COLS:
-            with self.subTest():
-                model.query.all()
+            with self.subTest(model=model):
+                self.assertNotEqual(len(model.query.all()), 0)
 
     def test_models_correct_cols(self):
         for model in MODELS_TO_COLS:
-            with self.subTest():
+            with self.subTest(model=model):
                 for col in MODELS_TO_COLS[model]:
-                    with self.subTest():
+                    with self.subTest(col=col):
                         self.assertTrue(hasattr(model, col))
 
 

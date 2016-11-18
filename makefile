@@ -1,10 +1,10 @@
 FILES :=                            \
     IDB3.py                     	\
+    tests.py					    \
     static/                     	\
     templates/                    	\
     app/models.py					\
-    app/tests.py					\
-    # app/tests.out					\
+    # tests.out 					\
  	# IDB3.html						\
  	# IDB3.log						\
  	# IDB3.pdf						\
@@ -48,5 +48,5 @@ tests.tmp:
 	coverage report -m >> tests.tmp
 	cat tests.tmp
 
-test: IDB.html IDB.log tests.tmp check
+test: check
 	

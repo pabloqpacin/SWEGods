@@ -6,6 +6,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@greekmythology.me
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+class Url(db.Model):
+    """
+    Information about a god in Greek mythology.
+    """
+
+    __tablename__ = 'urls'
+
+    name = db.Column(db.String, primary_key=True)
+    url  = db.Column(db.String)
+
+    def __init__(self, name, url):
+        self.name = name
+        self.url = url
+
+    def __repr__(self):
+        return '<Url %r>' % self.name
 
 class God(db.Model):
     """
@@ -15,7 +31,6 @@ class God(db.Model):
     __tablename__ = 'gods'
 
     name = db.Column(db.String, primary_key=True)
-    power = db.Column(db.String)
     romanname = db.Column(db.String)
     power = db.Column(db.String)
     symbol = db.Column(db.String)
@@ -26,14 +41,13 @@ class God(db.Model):
     # mothergod = db.Column(db.String, db.ForeignKey('god.name'))
     # motherhero = db.Column(db.String, db.ForeignKey('hero.name'))
 
-    def __init__(self, name, romanname, power, symbol, father, mother):
-        self.name = name
-        self.power = power
-        self.romanname = romanname
-        self.power = power
-        self.symbol = symbol
-        self.father = father
-        self.mother = mother
+    # def __init__(self, name, romanname, power, symbol, father, mother):
+    #     self.name = name
+    #     self.romanname = romanname
+    #     self.power = power
+    #     self.symbol = symbol
+    #     self.father = father
+    #     self.mother = mother
 
     def __repr__(self):
         return '<God %r>' % self.name
@@ -57,13 +71,13 @@ class Hero(db.Model):
     power = db.Column(db.String, nullable=False)
     home = db.Column(db.String, nullable=False)
 
-    def __init__(self, name, herotype, father, mother, power, home):
-        self.name = name
-        self.herotype = herotype
-        self.father = father
-        self.mother = mother
-        self.power = power
-        self.home = home
+    # def __init__(self, name, herotype, father, mother, power, home):
+    #     self.name = name
+    #     self.herotype = herotype
+    #     self.father = father
+    #     self.mother = mother
+    #     self.power = power
+    #     self.home = home
 
     def __repr__(self):
         return '<Hero %r>' % self.name
@@ -82,12 +96,12 @@ class Location(db.Model):
     locationtype = db.Column(db.String, nullable=False)
     gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
 
-    def __init__(self, name, altname, myth, locationtype, gods):
-        self.name = name
-        self.altname = altname
-        self.myth = myth
-        self.locationtype = locationtype
-        self.gods = gods
+    # def __init__(self, name, altname, myth, locationtype, gods):
+    #     self.name = name
+    #     self.altname = altname
+    #     self.myth = myth
+    #     self.locationtype = locationtype
+    #     self.gods = gods
 
     def __repr__(self):
         return '<Location %r>' % self.name
@@ -106,18 +120,19 @@ class Myth(db.Model):
     place = db.Column(db.String, nullable=False)
     theme = db.Column(db.String, nullable=False)
 
-    def __init__(self, name, description, gods, nongods, place, theme):
-        self.name = name
-        self.description = description
-        self.gods = gods
-        self.nongods = nongods
-        self.place = place
-        self.theme = theme
+    # def __init__(self, name, description, gods, nongods, place, theme):
+    #     self.name = name
+    #     self.description = description
+    #     self.gods = gods
+    #     self.nongods = nongods
+    #     self.place = place
+    #     self.theme = theme
 
     def __repr__(self):
         return '<Myth %r>' % self.name
 
 if __name__ == "__main__":
+    print(Url.query.all())
     print(God.query.all())
     print(Hero.query.all())
     print(Location.query.all())

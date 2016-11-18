@@ -16,21 +16,52 @@ console.log(locationor.name);
 console.log("MYTH AND");
 console.log(mythor.name);
 
-var godandrep = godand.name.replace(/'/g, '"');
+var godandrep = godand.name.replace(/'{/g, "{");
+godandrep = godandrep.replace(/}'/g, "}");
+console.log('REPLACE');
+console.log(godandrep);
 var godandobject = JSON.parse(godandrep);
-var heroandrep = heroand.name.replace(/'/g, '"');
+
+var heroandrep = heroand.name.replace(/'{/g, "{");
+heroandrep = heroandrep.replace(/}'/g, "}");
+console.log('REPLACE');
+console.log(heroandrep);
 var heroandobject = JSON.parse(heroandrep);
-var locationandrep = locationand.name.replace(/'/g, '"');
+
+var locationandrep = locationand.name.replace(/'{/g, "{");
+locationandrep = locationandrep.replace(/}'/g, "}");
+console.log('REPLACE');
+console.log(locationandrep);
 var locationandobject = JSON.parse(locationandrep);
-// var mythandrep = mythand.name.replace(/'/g, '"');
+
+// var mythandrep = mythand.name.replace(/'{/g, "{");
+// mythandrep = mythandrep.replace(/}'/g, "}");
+// console.log('REPLACE');
+// console.log(mythandrep);
 // var mythandobject = JSON.parse(mythandrep);
-var godorrep = godor.name.replace(/'/g, '"');
+
+var godorrep = godor.name.replace(/'{/g, "{");
+godorrep = godorrep.replace(/}'/g, "}");
+console.log('REPLACE');
+console.log(godorrep);
 var godorobject = JSON.parse(godorrep);
-var heroorrep = heroor.name.replace(/'/g, '"');
+
+var heroorrep = heroor.name.replace(/'{/g, "{");
+heroorrep = heroorrep.replace(/}'/g, "}");
+console.log('REPLACE');
+console.log(heroorrep);
 var heroorobject = JSON.parse(heroorrep);
-var locationorrep = locationor.name.replace(/'/g, '"');
+
+var locationorrep = locationor.name.replace(/'{/g, "{");
+locationorrep = locationorrep.replace(/}'/g, "}");
+console.log('REPLACE');
+console.log(locationorrep);
 var locationorobject = JSON.parse(locationorrep);
-// var mythorrep = mythor.name.replace(/'/g, '"');
+
+// var mythorrep = mythor.name.replace(/'{/g, "{");
+// mythorrep = mythorrep.replace(/}'/g, "}");
+// console.log('REPLACE');
+// console.log(mythorrep);
 // var mythorobject = JSON.parse(mythorrep);
 
 console.log('GOD AND OBJ');
