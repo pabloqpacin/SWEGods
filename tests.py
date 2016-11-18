@@ -2,9 +2,9 @@
     Tests for IDB3.py and app/models.py
 """
 
-from IDB3 import app
+from IDB3 import app, generateQuery, boldSearchTerms
 from unittest import main, TestCase
-from IDB3 import db, God, Hero, Location, Myth
+from app.models import db, God, Hero, Location, Myth
 
 GOD_COLS = ['name', 'power', 'romanname', 'power', 'symbol', 'father', 'mother']
 HERO_COLS = ['name', 'herotype', 'father', 'mother', 'power', 'home']
@@ -20,10 +20,12 @@ MODELS_TO_COLS = {
 
 class TestIDB(TestCase):
 
+
+
     def setUp(self):
         # Create Flask test client
         self.app = app.test_client()
-
+        self.maxDiff = None
         # self.a = [index, about_page, gods_model, heroes_model, creatures_model, myths_model, god_page, hero_page, location_page, myth_page, static_files, ]
 
     #------
@@ -137,6 +139,51 @@ class TestIDB(TestCase):
                     with self.subTest(col=col):
                         self.assertTrue(hasattr(model, col))
 
+    #-------
+    # search
+    #-------
+
+    def test_generate_query_terms(self):
+        result = generateQuery("hera zeus", 'gods', [])
+        self.assertTrue('hera' in result[0])
+        self.assertTrue('hera' in result[1])
+        self.assertTrue('zeus' in result[0])
+        self.assertTrue('zeus' in result[1])
+
+    def test_generate_query_table(self):
+        result = generateQuery("hera zeus", 'gods', [])
+        self.assertTrue('god' in result[0])
+        self.assertTrue('god' in result[1])
+
+    def test_generate_query_columns(self):
+        cols = ['name', 'romanname', 'power', 'symbol', 'father', 'mother']
+        result = generateQuery("hera zeus", 'gods', cols)
+        for col in cols:
+            with self.subTest(col=col):
+                self.assertTrue(col in result[0])
+                self.assertTrue(col in result[1])
+
+    def test_generage_query_correct_join(self):
+        result = generateQuery("hera zeus", 'gods', [])
+        self.assertTrue('intersect' in result[0].lower())
+        self.assertTrue('union' in result[1].lower())
+
+
+    #-----------------
+    # bold search term
+    #-----------------
+
+    def test_bold_search_term_1(self):
+        result = boldSearchTerms('hi', 'hi')
+        self.assertEqual('<b>hi</b>', result)
+
+    def test_bold_search_term_2(self):
+        result = boldSearchTerms('idb', 'swe idb is fun')
+        self.assertEqual('swe <b>idb</b> is fun', result)
+
+    def test_bold_search_term_3(self):
+        result = boldSearchTerms('bleh', 'swe idb is fun')
+        self.assertEqual('swe idb is fun', result)
 
 
 #------
