@@ -16,23 +16,75 @@ console.log(locationor.name);
 console.log("MYTH AND");
 console.log(mythor.name);
 
-var godandrep = godand.name.replace(/'{/g, "{");
-godandrep = godandrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(godandrep);
-var godandobject = JSON.parse(godandrep);
+var godandrep = godand.name;
+if( typeof godandrep == 'string') {
+    godandrep = godandrep.replace(/'{/g, "{");
+    godandrep = godandrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(godandrep);
+}
 
-var heroandrep = heroand.name.replace(/'{/g, "{");
-heroandrep = heroandrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(heroandrep);
-var heroandobject = JSON.parse(heroandrep);
+var godandobject = {};
 
-var locationandrep = locationand.name.replace(/'{/g, "{");
-locationandrep = locationandrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(locationandrep);
-var locationandobject = JSON.parse(locationandrep);
+try {
+    godandobject = JSON.parse(godandrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
+var heroandrep = heroand.name;
+if(typeof heroandrep == 'string') {
+    heroandrep = heroandrep.replace(/'{/g, "{");
+    heroandrep = heroandrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(heroandrep);
+}
+var heroandobject = {};
+
+try {
+    heroandobject = JSON.parse(heroandrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
+var locationandrep = locationand.name;
+if(typeof locationandrep == 'string') {
+    locationandrep = locationandrep.replace(/'{/g, "{");
+    locationandrep = locationandrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(locationandrep);
+}
+var locationandobject = {};
+
+try {
+    locationandobject = JSON.parse(locationandrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
+var mythandrep = mythand.name;
+if(typeof mythandrep == 'string') {
+    mythandrep = mythandrep.replace(/'{/g, "{");
+    mythandrep = mythandrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(mythandrep);
+}
+var mythandobject = {};
+
+try {
+    mythandobject = JSON.parse(mythandrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
 
 // var mythandrep = mythand.name.replace(/'{/g, "{");
 // mythandrep = mythandrep.replace(/}'/g, "}");
@@ -40,23 +92,75 @@ var locationandobject = JSON.parse(locationandrep);
 // console.log(mythandrep);
 // var mythandobject = JSON.parse(mythandrep);
 
-var godorrep = godor.name.replace(/'{/g, "{");
-godorrep = godorrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(godorrep);
-var godorobject = JSON.parse(godorrep);
+var godorrep = godor.name;
+if( typeof godorrep == 'string') {
+    godorrep = godorrep.replace(/'{/g, "{");
+    godorrep = godorrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(godorrep);
+}
 
-var heroorrep = heroor.name.replace(/'{/g, "{");
-heroorrep = heroorrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(heroorrep);
-var heroorobject = JSON.parse(heroorrep);
+var godorobject = {};
 
-var locationorrep = locationor.name.replace(/'{/g, "{");
-locationorrep = locationorrep.replace(/}'/g, "}");
-console.log('REPLACE');
-console.log(locationorrep);
-var locationorobject = JSON.parse(locationorrep);
+try {
+    godorobject = JSON.parse(godorrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
+var heroorrep = heroor.name;
+if(typeof heroorrep == 'string') {
+    heroorrep = heroorrep.replace(/'{/g, "{");
+    heroorrep = heroorrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(heroorrep);
+}
+var heroorobject = {};
+
+try {
+    heroorobject = JSON.parse(heroorrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
+var locationorrep = locationor.name;
+if(typeof locationorrep == 'string') {
+    locationorrep = locationorrep.replace(/'{/g, "{");
+    locationorrep = locationorrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(locationorrep);
+}
+var locationorobject = {};
+
+try {
+    locationorobject = JSON.parse(locationorrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
+
+
+var mythorrep = mythor.name;
+if(typeof mythorrep == 'string') {
+    mythorrep = mythorrep.replace(/'{/g, "{");
+    mythorrep = mythorrep.replace(/}'/g, "}");
+    console.log('REPLACE');
+    console.log(mythorrep);
+}
+var mythorobject = {};
+
+try {
+    mythorobject = JSON.parse(mythorrep);
+    }
+catch (e)
+{
+    console.log(e);
+}
 
 // var mythorrep = mythor.name.replace(/'{/g, "{");
 // mythorrep = mythorrep.replace(/}'/g, "}");
@@ -70,16 +174,16 @@ console.log('HERO AND OBJ');
 console.log(heroandobject);
 console.log('LOCATION AND OBJ');
 console.log(locationandobject);
-// console.log('MYTH AND OBJ');
-// console.log(mythandobject);
+console.log('MYTH AND OBJ');
+console.log(mythandobject);
 console.log('GOD OR OBJ');
 console.log(godorobject);
 console.log('HERO OR OBJ');
 console.log(heroorobject);
 console.log('LOCATION OR OBJ');
 console.log(locationorobject);
-// console.log('MYTH OR OBJ');
-// console.log(mythorobject);
+console.log('MYTH OR OBJ');
+console.log(mythorobject);
 
 
 
@@ -139,14 +243,14 @@ for (var i = 0; i < locationandobject.length; i++) {
 }
 
 var mythsinfoand = [];
-for (var i = 0; i < MythsList.length; i++) {
+for (var i = 0; i < mythandobject.length; i++) {
     var myth = {
-      'Name': unsafe('<a href="/myths/' + MythsList[i].name.toLowerCase() + '">' + MythsList[i].name + '</a>'),
-      'Description': unsafe(MythsList[i].description),
-      'Theme': unsafe(MythsList[i].theme),
-      'Place': unsafe(MythsList[i].place),
-      'Gods': unsafe(MythsList[i].gods),
-      'Non-Gods': unsafe(MythsList[i].nongods)
+      'Name': unsafe('<a href="/myths/' + mythandobject[i].name.toLowerCase() + '">' + mythandobject[i].name + '</a>'),
+      'Description': unsafe(mythandobject[i].description),
+      'Theme': unsafe(mythandobject[i].theme),
+      'Place': unsafe(mythandobject[i].place),
+      'Gods': unsafe(mythandobject[i].gods),
+      'Non-Gods': unsafe(mythandobject[i].nongods)
     };
     mythsinfoand.push(myth);
 }
@@ -196,14 +300,14 @@ for (var i = 0; i < locationorobject.length; i++) {
 }
 
 var mythsinfoor = [];
-for (var i = 0; i < MythsList.length; i++) {
+for (var i = 0; i < mythorobject.length; i++) {
     var myth = {
-      'Name': unsafe('<a href="/myths/' + MythsList[i].name.toLowerCase() + '">' + MythsList[i].name + '</a>'),
-      'Description': unsafe(MythsList[i].description),
-      'Theme': unsafe(MythsList[i].theme),
-      'Place': unsafe(MythsList[i].place),
-      'Gods': unsafe(MythsList[i].gods),
-      'Non-Gods': unsafe(MythsList[i].nongods)
+      'Name': unsafe('<a href="/myths/' + mythorobject[i].name.toLowerCase() + '">' + mythorobject[i].name + '</a>'),
+      'Description': unsafe(mythorobject[i].description),
+      'Theme': unsafe(mythorobject[i].theme),
+      'Place': unsafe(mythorobject[i].place),
+      'Gods': unsafe(mythorobject[i].gods),
+      'Non-Gods': unsafe(mythorobject[i].nongods)
     };
     mythsinfoor.push(myth);
 }
