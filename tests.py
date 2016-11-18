@@ -139,6 +139,14 @@ class TestIDB(TestCase):
                     with self.subTest(col=col):
                         self.assertTrue(hasattr(model, col))
 
+    def test_models_repr(self):
+        for model in MODELS_TO_COLS:
+            with self.subTest(model=model):
+                result = model.query.first()
+                name = result.name
+                expected = '<' + type(result).__name__ + " '" + name + "'>"
+                self.assertEqual(expected, str(result))
+
     #-------
     # search
     #-------
@@ -163,7 +171,7 @@ class TestIDB(TestCase):
                 self.assertTrue(col in result[0])
                 self.assertTrue(col in result[1])
 
-    def test_generage_query_correct_join(self):
+    def test_generate_query_correct_join(self):
         result = generateQuery("hera zeus", 'gods', [])
         self.assertTrue('intersect' in result[0].lower())
         self.assertTrue('union' in result[1].lower())
