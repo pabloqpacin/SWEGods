@@ -285,14 +285,14 @@
 		    <h2 class="text-center" > Unit Tests </h2>
 				<h2 class="text-center" >
 					<button class="btn btn-success btn-lg clearBtn" onclick="myFunction()">Run Unit Tests</button>
-			        <pre id="tests"><pre>
+			        <pre id="demo"><pre>
                 <script>
                 function myFunction() {
-                  document.getElementById("tests").innerHTML = "loading...";
+                  document.getElementById("demo").innerHTML = "loading...";
                   $(document).ready(function(){
                   var url = '/performtests';
                   $.get(url).done(function(data){
-                    document.getElementById("tests").innerHTML = data["result"].replace(/(?:\r\n|\r|\n)/g, '<br />');
+                    document.getElementById("demo").innerHTML = data["result"].replace(/(?:\r\n|\r|\n)/g, '<br />');
                   });
                 });
                }
