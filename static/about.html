@@ -284,15 +284,15 @@
 			<div class="container">
 		    <h2 class="text-center" > Unit Tests </h2>
 				<h2 class="text-center" >
-					<button class="btn btn-success btn-lg clearBtn" onclick="myFunction()">Run Unittests</button>
-			        <pre id="runTests"><pre>
+					<button class="btn btn-success btn-lg clearBtn" onclick="myFunction()">Run Unit Tests</button>
+			        <pre id="tests"><pre>
                 <script>
                 function myFunction() {
-                  document.getElementById("runTests").innerHTML = "loading...";
+                  document.getElementById("tests").innerHTML = "loading...";
                   $(document).ready(function(){
-                  var url = '/tests';
+                  var url = '/performtests';
                   $.get(url).done(function(data){
-                    document.getElementById("runTests").innerHTML = data["result"].replace(/(?:\r\n|\r|\n)/g, '<br />');
+                    document.getElementById("tests").innerHTML = data["result"].replace(/(?:\r\n|\r|\n)/g, '<br />');
                   });
                 });
                }
