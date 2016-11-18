@@ -302,7 +302,7 @@ def myths_model():
 
 @app.route('/tests')
 def tests():
-    output = subprocess.Popen('python tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
+    output = subprocess.Popen('python3 tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
     output.wait()
     stuff, output = output.communicate()
     return jsonify(**{'result': str(output)})
