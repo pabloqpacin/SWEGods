@@ -243,59 +243,76 @@ def generateQuery(searchterm, tablename, columns):
         return (andQ, orQ)
 
 def boldSearchTerms(searchterm, inputstring):
+    """
+        Wraps all instances of searchterm in inputstring with bold HTML tags.
+    """
     terms = searchterm.split()
     for term in terms:
         inputstring = re.sub(r'('+ term +')', r'<b>\1</b>', inputstring, flags=re.IGNORECASE)
     return inputstring
 
 
-# Shows error message
 def error_wrapper(content):
+    """
+        Shows error message.
+    """
 	return render_template('error_template.html', error_message=content)
 
-# Splash page
 @app.route('/')
 def index():
+    """
+        Shows the splash page.
+    """
 	if os.path.exists(app.config['STATIC_SPLASH_PAGE']):
 		return send_file(app.config['STATIC_SPLASH_PAGE'])
 	return error_wrapper('Hello, World! <SPLASH PAGE NOT YET ADDED>'), 404
 
-# Connects to the about page
 @app.route('/about')
 @app.route('/about/')
 def about_page():
+    """
+        Connects to the about page.
+    """
 	if os.path.exists(app.config['STATIC_ABOUT_PAGE']):
 		return send_file(app.config['STATIC_ABOUT_PAGE'])
 	return error_wrapper('About page to be added'), 404
 
-# Connects to gods page
 @app.route('/gods')
 @app.route('/gods/')
 def gods_model():
+    """
+        Connects to the gods page.
+    """
 	if os.path.exists(app.config['STATIC_GODS_LIST']):
 		return send_file(app.config['STATIC_GODS_LIST'])
 	return error_wrapper('Gods Model page to be added'), 404
 
-# Connects to heroes page
 @app.route('/heroes')
 @app.route('/heroes/')
 def heroes_model():
+    """
+        Connects to the heroes page.
+    """
 	if os.path.exists(app.config['STATIC_HEROES_LIST']):
 		return send_file(app.config['STATIC_HEROES_LIST'])
 	return error_wrapper('Heroes Model page to be added'), 404
 
-# Connects to creatures page
 @app.route('/locations')
 @app.route('/locations/')
 def creatures_model():
+    """
+        Connects to creatures page
+    """
 	if os.path.exists(app.config['STATIC_LOCATIONS_LIST']):
 		return send_file(app.config['STATIC_LOCATIONS_LIST'])
 	return error_wrapper('Locations Model page to be added'), 404
 
-# Connects to myths page
 @app.route('/myths')
 @app.route('/myths/')
 def myths_model():
+    """
+        Connects to myths page
+    """
 	if os.path.exists(app.config['STATIC_MYTHS_LIST']):
 		return send_file(app.config['STATIC_MYTHS_LIST'])
 	return error_wrapper('Myths Model page to be added'), 404

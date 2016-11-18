@@ -38,20 +38,8 @@ class God(db.Model):
     romanname = db.Column(db.String)
     power = db.Column(db.String)
     symbol = db.Column(db.String)
-    father = db.Column(db.String)
-    mother = db.Column(db.String)
-    # fathergod = db.Column(db.String, db.ForeignKey('god.name'))
-    # fatherhero = db.Column(db.String, db.ForeignKey('hero.name'))
-    # mothergod = db.Column(db.String, db.ForeignKey('god.name'))
-    # motherhero = db.Column(db.String, db.ForeignKey('hero.name'))
-
-    # def __init__(self, name, romanname, power, symbol, father, mother):
-    #     self.name = name
-    #     self.romanname = romanname
-    #     self.power = power
-    #     self.symbol = symbol
-    #     self.father = father
-    #     self.mother = mother
+    father = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    mother = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
 
     def __repr__(self):
         return '<God %r>' % self.name
@@ -66,22 +54,10 @@ class Hero(db.Model):
 
     name = db.Column(db.String, primary_key=True, nullable=False)
     herotype = db.Column(db.String, nullable=False)
-    father = db.Column(db.String, nullable=False)
-    mother = db.Column(db.String, nullable=False)
-    # father_god = db.Column(db.String, db.ForeignKey('god.name'))
-    # father_hero = db.Column(db.String, db.ForeignKey('hero.name'))
-    # mother_god = db.Column(db.String, db.ForeignKey('god.name'))
-    # mother_hero = db.Column(db.String, db.ForeignKey('hero.name'))  
+    father = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
+    mother = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
     power = db.Column(db.String, nullable=False)
     home = db.Column(db.String, nullable=False)
-
-    # def __init__(self, name, herotype, father, mother, power, home):
-    #     self.name = name
-    #     self.herotype = herotype
-    #     self.father = father
-    #     self.mother = mother
-    #     self.power = power
-    #     self.home = home
 
     def __repr__(self):
         return '<Hero %r>' % self.name
@@ -100,13 +76,6 @@ class Location(db.Model):
     locationtype = db.Column(db.String, nullable=False)
     gods = db.Column(db.String, db.ForeignKey('god.name'), nullable=False)
 
-    # def __init__(self, name, altname, myth, locationtype, gods):
-    #     self.name = name
-    #     self.altname = altname
-    #     self.myth = myth
-    #     self.locationtype = locationtype
-    #     self.gods = gods
-
     def __repr__(self):
         return '<Location %r>' % self.name
 
@@ -123,14 +92,6 @@ class Myth(db.Model):
     nongods = db.Column(db.String, nullable=False)
     place = db.Column(db.String, nullable=False)
     theme = db.Column(db.String, nullable=False)
-
-    # def __init__(self, name, description, gods, nongods, place, theme):
-    #     self.name = name
-    #     self.description = description
-    #     self.gods = gods
-    #     self.nongods = nongods
-    #     self.place = place
-    #     self.theme = theme
 
     def __repr__(self):
         return '<Myth %r>' % self.name
