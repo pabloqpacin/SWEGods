@@ -295,6 +295,13 @@ def myths_model():
 		return send_file(app.config['STATIC_MYTHS_LIST'])
 	return error_wrapper('Myths Model page to be added'), 404
 
+@app.route('/tests')
+def testinate():
+    output = subprocess.Popen('python /var/www/html/SWEGods/tests.py'.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
+    output.wait()
+    stuff, output = output.communicate()
+    return jsonify(**{'result': str(output)})
+
 
 @app.route('/search')
 @app.route('/search/')

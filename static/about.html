@@ -286,6 +286,17 @@
 				<h2 class="text-center" >
 					<button class="btn btn-success btn-lg clearBtn" onclick="load_test()">Run Unittests</button>
 			        <pre id="runTests"><pre>
+                <script>
+                function myFunction() {
+                  document.getElementById("runTests").innerHTML = "loading...";
+                  $(document).ready(function(){
+                  var url = '/tests';
+                  $.get(url).done(function(data){
+                    document.getElementById("runTests").innerHTML = data["result"].replace(/(?:\r\n|\r|\n)/g, '<br />');
+                  });
+                });
+               }
+              </script>
 				</h2>
 			</div>
 
